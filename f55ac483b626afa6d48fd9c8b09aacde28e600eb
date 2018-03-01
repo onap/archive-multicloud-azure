@@ -22,6 +22,30 @@
       "revId": "f55ac483b626afa6d48fd9c8b09aacde28e600eb",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a93c517_f21af7c4",
+        "filename": "INFO.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1899
+      },
+      "writtenOn": "2018-03-01T13:02:54Z",
+      "side": 1,
+      "message": "It is VMware.",
+      "parentUuid": "5a93c517_77eb3978",
+      "range": {
+        "startLine": 38,
+        "startChar": 7,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "f55ac483b626afa6d48fd9c8b09aacde28e600eb",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
