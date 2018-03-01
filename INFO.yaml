@@ -1,0 +1,42 @@
+---
+project: 'multicloud-azure'
+project_creation_date: '2017-06-22'
+lifecycle_state: 'Incubation'
+project_lead: &onap_releng_ptl
+    name: 'Xinhui Li'
+    email: 'lxinhui@vmware.com'
+    id: 'xinhuili'
+    company: 'VMware'
+    timezone: 'China/Beijing'
+primary_contact: *onap_releng_ptl
+issue_tracking:
+    type: 'jira'
+    url: 'https://jira.onap.org/projects/MULTICLOUD'
+    key: 'MULTICLOUD'
+meetings:
+    - type: 'zoom'
+        agenda: 'https://wiki.onap.org/pages/viewpage.action?pageId=6591499'
+        url: 'https://wiki.onap.org/pages/viewpage.action?pageId=6591499'
+        server: 'n/a'
+        channel: 'n/a'
+        repeats: 'weekly'
+        time: '22:00 UTC'
+committers:
+    - <<: *onap_releng_ptl
+    - name: 'Bin Hu'
+        email: 'bh526r@att.com'
+        company: 'ATT'
+        id: 'bh526r'
+        timezone: 'America/Palo Alto'
+    - name: 'Bin Yang'
+        email: 'bin.yang@windriver.com'
+        company: 'Windriver'
+        id: 'biny993'
+        timezone: 'China/Beijing'
+    - name: 'Liang Ke'
+        email: 'lokyse@163.com'
+        company: ''
+        id: 'liangke'
+        timezone: 'China/Beijing'
+tsc:
+    approval: 'https://lists.onap.org/pipermail/onap-tsc'
