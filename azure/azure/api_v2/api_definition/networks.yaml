@@ -1,0 +1,91 @@
+---
+  info:
+    version: "1.0.0"
+    title: "Multi Cloud Network"
+    description: "Definition of Host API"
+    termsOfService: "http://swagger.io/terms/"
+  schemes:
+    - "http"
+  produces:
+    - "application/json"
+  paths:
+    /{vimid}/{tenantid}/networks/{networkid}:
+      parameters:
+        - type: string
+          name: vimid
+        - type: string
+          format: uuid
+          name: tenantid
+        - type: string
+          name: networkid
+          in: path
+          required: true
+      get:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/network"
+      get_all:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                type: "array"
+                items:
+                  $ref: "#/definitions/network"
+      post:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/network"
+      delete:
+         responses: "204"
+      vim_path: "/network/v2.0/networks"
+  definitions:
+      network:
+        plural_vim_resource: "networks"
+        vim_resource: "network"
+        plural: "networks"
+        properties:
+          name:
+            type: string
+            required: true
+            source: network.name
+          id:
+            type: string
+            source: network.id
+          status:
+            type: string
+            source: network.status
+          segmentationId:
+            type: string
+            source: network.provider:segmentation_id
+            default: None
+          physicalNetwork:
+            type: string
+            source: network.provider:physical_network
+            default: None
+          networkType:
+            type: string
+            source: network.provider:network_type
+            default: None
+          tenantId:
+            type: string
+            source: network.tenant_id
+          shared:
+            type: boolean
+            source: network.shared
+            required: true
+          routerExternal:
+            type: boolean
+            source: network.router:external
+            required: true
+          vlanTransparent:
+            type: boolean
+            source: network.vlan_transparent
+            default: false

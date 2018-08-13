@@ -1,0 +1,23 @@
+.project
+.classpath
+.vscode
+.settings/
+.checkstyle
+target/
+logs/*.log
+*.pyc
+*.swp
+.idea/
+
+# Test related files
+azure/.coverage
+azure/.tox/
+azure/logs/*.log
+azure/test-reports/
+
+# build files
+
+azure/build
+azure/dist
+azure/1.25.0
+azure/*.egg-info

@@ -1,0 +1,76 @@
+---
+  info:
+    version: "1.0.0"
+    title: "Multi Cloud Image"
+    description: "Definition of Image API"
+    termsOfService: "http://swagger.io/terms/"
+  schemes:
+    - "http"
+  produces:
+    - "application/json"
+  paths:
+    /{vimid}/{tenantid}/images/{imageid}:
+      parameters:
+        - type: string
+          name: vimid
+        - type: string
+          format: uuid
+          name: tenantid
+        - type: string
+          name: imageid
+          in: path
+          required: true
+      get:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/image"
+      get_all:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                type: "array"
+                items:
+                  $ref: "#/definitions/image"
+      post:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/image"
+      delete:
+         responses: "204"
+      vim_path: "/image/v2/images"
+  definitions:
+      image:
+        plural_vim_resource: "images"
+        vim_resource: "image"
+        plural: "images"
+        properties:
+          name:
+            type: string
+            required: true
+            source: image.name
+          id:
+            type: string
+            source: image.id
+          status:
+            type: string
+            source: image.status
+          imageType:
+            type: string
+            source: image.disk_format
+          containerFormat:
+            type: string
+            source: image.container_format
+          visibility:
+            type: string
+            source: image.visibility
+          size:
+            type: integer
+            source: image.size

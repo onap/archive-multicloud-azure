@@ -1,0 +1,88 @@
+---
+  info:
+    version: "1.0.0"
+    title: "Multi Cloud Subnet"
+    description: "Definition of Subnet API"
+    termsOfService: "http://swagger.io/terms/"
+  schemes:
+    - "http"
+  produces:
+    - "application/json"
+  paths:
+    /{vimid}/{tenantid}/subnets/{subnetid}:
+      parameters:
+        - type: string
+          name: vimid
+        - type: string
+          format: uuid
+          name: tenantid
+        - type: string
+          name: subnetid
+          in: path
+          required: true
+      get:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/subnet"
+      get_all:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                type: "array"
+                items:
+                  $ref: "#/definitions/subnet"
+      post:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/subnet"
+      delete:
+         responses: "204"
+      vim_path: "/network/v2.0/subnets"
+  definitions:
+      subnet:
+        plural_vim_resource: "subnets"
+        vim_resource: "subnet"
+        plural: "subnets"
+        properties:
+          name:
+            type: string
+            required: true
+            source: subnet.name
+          id:
+            type: string
+            source: subnet.id
+          status:
+            type: string
+            source: subnet.status
+          networkId:
+            type: string
+            source: subnet.network_id
+            required: true
+          allocationPools:
+            source: subnet.allocation_pools
+          gatewayIp:
+            type: string
+            source: subnet.gateway_ip
+            default: None
+          tenantId:
+            type: string
+            source: subnet.tenant_id
+          enableDhcp:
+            type: boolean
+            source: subnet.enable_dhcp
+          ipVersion:
+            source: subnet.ip_version
+          dnsNameServers:
+            source: subnet.dns_nameservers
+          cidr:
+            source: subnet.cidr
+          hostRoutes:
+            source: subnet.host_routes

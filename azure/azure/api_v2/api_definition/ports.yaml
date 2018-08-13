@@ -1,0 +1,83 @@
+---
+  info:
+    version: "1.0.0"
+    title: "Multi Cloud Port"
+    description: "Definition of Port API"
+    termsOfService: "http://swagger.io/terms/"
+  schemes:
+    - "http"
+  produces:
+    - "application/json"
+  paths:
+    /{vimid}/{tenantid}/ports/{portid}:
+      parameters:
+        - type: string
+          name: vimid
+        - type: string
+          format: uuid
+          name: tenantid
+        - type: string
+          name: portid
+          in: path
+          required: true
+      get:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/port"
+      get_all:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                type: "array"
+                items:
+                  $ref: "#/definitions/port"
+      post:
+        produces:
+          - "application/json"
+        responses:
+          "200":
+            schema:
+                $ref: "#/definitions/port"
+      delete:
+         responses: "204"
+      vim_path: "/network/v2.0/ports"
+  definitions:
+      port:
+        plural_vim_resource: "ports"
+        vim_resource: "port"
+        plural: "port"
+        properties:
+          name:
+            type: string
+            required: true
+            source: port.name
+          id:
+            type: string
+            source: port.id
+          status:
+            type: string
+            source: port.status
+          networkId:
+            type: string
+            source: port.network_id
+            required: true
+          vnicType:
+            source: port.binding:vnic_type
+          securityGroups:
+            type: string
+            source: port.security_groups
+          tenantId:
+            type: string
+            source: port.tenant_id
+          macAddress:
+            type: string
+            source: port.mac_address
+          subnetId:
+            source: port.fixed_ips[0].subnet_id
+          ip:
+            source: port.fixed_ips[0].ip_address
