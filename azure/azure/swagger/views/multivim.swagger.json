@@ -1,0 +1,51 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "MultiVIM Service rest API"
+    },
+    "basePath": "/api/multicloud-azure/v0/",
+    "tags": [
+        {
+            "name": "MultiVIM Azure services"
+        }
+    ],
+    "paths": {
+        "/{vimid}/registry": {
+            "post": {
+                "tags": [
+                    "vim registration"
+                ],
+                "summary": "vim registration API",
+                "description": "vim registration API",
+                "operationId": "vim_registration",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "vimid",
+                        "in": "path",
+                        "description": "vim instance id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "404": {
+                        "description": "the vim id is wrong"
+                    },
+                    "500": {
+                        "description": "error occured during the process"
+                    }
+                }
+            }
+        }
+    }
+}
