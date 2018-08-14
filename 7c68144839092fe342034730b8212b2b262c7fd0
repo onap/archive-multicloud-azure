@@ -556,6 +556,98 @@
       "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ef65b3e1",
+        "filename": "azure/azure/swagger/urls.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-14T01:24:20Z",
+      "side": 1,
+      "message": "please also provide api v1 which replace the vimid with {cloud-owner}/{cloud-region-id}",
+      "range": {
+        "startLine": 31,
+        "startChar": 38,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4f4e2771",
+        "filename": "azure/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-14T01:24:20Z",
+      "side": 1,
+      "message": "The port should be a new one and dedicated to azure plugin. Please coordinate with the team to make sure there is no collision on the port allocation. I believe you should be able to take 9008",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6f7a038a",
+        "filename": "azure/version.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-14T01:24:20Z",
+      "side": 1,
+      "message": "It would be better if azure could align the version to other plugins, right now it is : \nmajor\u003d1\nminor\u003d2\npatch\u003d0",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0f6fcfc6",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-14T01:24:20Z",
+      "side": 1,
+      "message": "please align to other plugins, e.g. 1.2.0-XXX for C release",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
