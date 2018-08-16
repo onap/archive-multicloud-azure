@@ -2,6 +2,604 @@
   "comments": [
     {
       "key": {
+        "uuid": "1a76adc5_2442e03e",
+        "filename": "License.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Sudhakar, is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 4,
+        "startChar": 26,
+        "endLine": 4,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_246980be",
+        "filename": "azure/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Can we follow the convention/best practice to make sure each line does not exceed 80 characters?",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 163
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e462a8d7",
+        "filename": "azure/assembly.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Sudhakar, is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_045ec412",
+        "filename": "azure/azure/api_v2/api_definition/hosts.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Should we use cloud_owner and cloud_region_id? Bin Yang may confirm.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a49cb0c1",
+        "filename": "azure/azure/api_v2/api_definition/images.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Should we use cloud_owner and cloud_region_id? Bin Yang may confirm.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64a69812",
+        "filename": "azure/azure/api_v2/api_definition/networks.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Should we use cloud_owner and cloud_region_id? Bin Yang may confirm.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_84a974e1",
+        "filename": "azure/azure/api_v2/api_definition/ports.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Should we use cloud_owner and cloud_region_id? Bin Yang may confirm.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_44ab5cd6",
+        "filename": "azure/azure/api_v2/api_definition/subnets.yaml",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Should we use cloud_owner and cloud_region_id? Bin Yang may confirm.",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c4868c65",
+        "filename": "azure/azure/api_v2/api_definition/utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_24974092",
+        "filename": "azure/azure/api_v2/api_router/controller_builder.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e4906897",
+        "filename": "azure/azure/api_v2/api_router/root.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a4ea700d",
+        "filename": "azure/azure/api_v2/api_router/swagger_json.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c4ed2c27",
+        "filename": "azure/azure/api_v2/api_router/v0_controller.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64f458f2",
+        "filename": "azure/azure/api_v2/app.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_84f734f5",
+        "filename": "azure/azure/api_v2/service.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_44d91c82",
+        "filename": "azure/azure/event_listener/i18n.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Copyright notice and license statement is missing.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e4e7083f",
+        "filename": "azure/azure/event_listener/listener.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Copyright notice and license statement is missing.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c4d44c49",
+        "filename": "azure/azure/event_listener/server.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Copyright notice and license statement is missing.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64cbf8a5",
+        "filename": "azure/azure/middleware.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_24c5008e",
+        "filename": "azure/azure/pub/config/config.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e4be28ff",
+        "filename": "azure/azure/pub/database/models.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_04ba440a",
+        "filename": "azure/azure/pub/exceptions.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 25,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a43830a1",
+        "filename": "azure/azure/pub/msapi/extsys.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c43bec9a",
+        "filename": "azure/azure/pub/utils/enumutil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64421812",
+        "filename": "azure/azure/pub/utils/fileutil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8445f418",
+        "filename": "azure/azure/pub/utils/idutil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_dbc8ab76",
         "filename": "azure/azure/pub/utils/restcall.py",
         "patchSetId": 2
@@ -16,6 +614,351 @@
       "range": {
         "startLine": 1,
         "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_244c2042",
+        "filename": "azure/azure/pub/utils/syscomm.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_4447dc1d",
+        "filename": "azure/azure/pub/utils/timeutil.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e455c8c6",
+        "filename": "azure/azure/pub/utils/values.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a45fd0e4",
+        "filename": "azure/azure/pub/vim/const.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c4620cad",
+        "filename": "azure/azure/pub/vim/const.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is it dependent on VMWare openstack only?",
+      "range": {
+        "startLine": 14,
+        "startChar": 16,
+        "endLine": 14,
+        "endChar": 24
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6459b8fd",
+        "filename": "azure/azure/samples/tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_845c14ef",
+        "filename": "azure/azure/samples/urls.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2473c081",
+        "filename": "azure/azure/samples/views.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_446efc97",
+        "filename": "azure/azure/scripts/api.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e46ce89e",
+        "filename": "azure/azure/settings-cover.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a406f0cc",
+        "filename": "azure/azure/settings.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c409acde",
+        "filename": "azure/azure/swagger/image_utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_6410d801",
+        "filename": "azure/azure/swagger/nova_utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_8413b40c",
+        "filename": "azure/azure/swagger/tests.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_24fae0bd",
+        "filename": "azure/azure/swagger/urls.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
         "endLine": 1,
         "endChar": 38
       },
@@ -41,6 +984,558 @@
         "startChar": 8,
         "endLine": 34,
         "endChar": 16
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_44f59cc9",
+        "filename": "azure/azure/swagger/utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "You may also want to add copyright notice of contributing company.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e40388b6",
+        "filename": "azure/azure/swagger/views.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_04ffa4ab",
+        "filename": "azure/azure/swagger/views/registry/views.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a42d9048",
+        "filename": "azure/azure/swagger/views/swagger_json.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c430cca0",
+        "filename": "azure/azure/swagger/volume_utils.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64277865",
+        "filename": "azure/azure/tests/test_aai_client.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 21,
+        "endLine": 1,
+        "endChar": 33
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_842ad42a",
+        "filename": "azure/azure/tests/test_restcall.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_2421804d",
+        "filename": "azure/azure/urls.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_441cbc13",
+        "filename": "azure/azure/wsgi.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_e41aa816",
+        "filename": "azure/docker/build_image.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_0416c4f1",
+        "filename": "azure/docker/docker-entrypoint.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a4d4b020",
+        "filename": "azure/docker/instance-config.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c4d76c22",
+        "filename": "azure/docker/instance-init.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64de9841",
+        "filename": "azure/docker/instance-run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_84e17400",
+        "filename": "azure/initialize.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_24e8a0e1",
+        "filename": "azure/manage.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_44e35c05",
+        "filename": "azure/pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 3,
+        "startChar": 25,
+        "endLine": 3,
+        "endChar": 37
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_04ed64ef",
+        "filename": "azure/run.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_a4bb50e4",
+        "filename": "azure/setup.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 1,
+        "startChar": 26,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_c4be8cd4",
+        "filename": "azure/stop.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 26,
+        "endLine": 2,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_44ca7c6f",
+        "filename": "azure/version.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Copyright notice and license statement is missing.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_64b538ed",
+        "filename": "pom.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 3,
+        "startChar": 24,
+        "endLine": 3,
+        "endChar": 35
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_84b894e6",
+        "filename": "sonar.sh",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 36
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_24cf4081",
+        "filename": "version.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-08-16T18:46:10Z",
+      "side": 1,
+      "message": "Is the work contributed by VMWare or Amdocs?",
+      "range": {
+        "startLine": 2,
+        "startChar": 25,
+        "endLine": 2,
+        "endChar": 38
       },
       "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
