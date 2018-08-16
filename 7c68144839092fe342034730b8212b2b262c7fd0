@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_37a775bf",
+        "filename": ".gitreview",
+        "patchSetId": 1
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_a5b60189",
+      "range": {
+        "startLine": 4,
+        "startChar": 19,
+        "endLine": 4,
+        "endChar": 35
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_a544c174",
         "filename": "License.txt",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d7aba187",
+        "filename": "License.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "I\u0027m really not sure about the license on what to keep for the entire project. This might take a while to finalize the licensing to be used in the whole project.",
+      "parentUuid": "1a76adc5_a544c174",
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c549bd8c",
         "filename": "azure/.gitignore",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "Given that the .gitignore in the root file covers these patterns this file is not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 5
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1bde236e",
+        "filename": "azure/.gitignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c549bd8c",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_7bf717f6",
+        "filename": "azure/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_2558b155",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 41
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e531590c",
         "filename": "azure/assembly.xml",
         "patchSetId": 1
@@ -105,6 +195,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_17a279ae",
+        "filename": "azure/assembly.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "This is needed to create the zip file which will be used inside docker container.",
+      "parentUuid": "1a76adc5_e531590c",
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_0537b500",
         "filename": "azure/azure/__init__.py",
         "patchSetId": 1
@@ -116,6 +224,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "This content is not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_97952942",
+        "filename": "azure/azure/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_0537b500",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_b792a555",
+        "filename": "azure/azure/api_v2/api_definition/hosts.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c540dd58",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_8522e5b7",
         "filename": "azure/azure/api_v2/api_definition/images.yaml",
         "patchSetId": 1
@@ -162,6 +318,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "Invalid indentation, this should be 4 spaces instead of 6",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_579f915f",
+        "filename": "azure/azure/api_v2/api_definition/images.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_8522e5b7",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -197,6 +377,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_779c0d6a",
+        "filename": "azure/azure/api_v2/api_definition/networks.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_452ccdab",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e5187986",
         "filename": "azure/azure/api_v2/api_definition/ports.yaml",
         "patchSetId": 1
@@ -208,6 +412,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "Invalid indentation, this should be 4 spaces instead of 6",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_17891926",
+        "filename": "azure/azure/api_v2/api_definition/ports.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_e5187986",
       "range": {
         "startLine": 50,
         "startChar": 0,
@@ -243,6 +471,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_378e952f",
+        "filename": "azure/azure/api_v2/api_definition/subnets.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_051ed570",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 6
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_69052310",
         "filename": "azure/azure/api_v2/api_definition/utils.py",
         "patchSetId": 1
@@ -254,6 +506,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "This can be implemented in affirmative way:\n\n    for f in pkg_resources.resource_listdir(definition_dir, \u0027.\u0027):\n        if f.endswith(\".yaml\"):\n            with pkg_resources.resource_stream(definition_dir, f) as fd:\n                # TODO(xiaohhui): Should add exception handler to inform user of\n                # potential error.\n                api_def.append(yaml.safe_load(fd))",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 46
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_d782c1ff",
+        "filename": "azure/azure/api_v2/api_definition/utils.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_69052310",
       "range": {
         "startLine": 22,
         "startChar": 0,
@@ -289,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d799616f",
+        "filename": "azure/azure/api_v2/api_router/controller_builder.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c93a37cd",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 71,
+        "endChar": 18
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_494e2771",
         "filename": "azure/azure/event_listener/.gitignore",
         "patchSetId": 1
@@ -300,6 +600,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "this file is not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 5
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f79edd55",
+        "filename": "azure/azure/event_listener/.gitignore",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_494e2771",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -335,6 +659,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_97a3e99d",
+        "filename": "azure/azure/event_listener/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_6953e317",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 74
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_09582f31",
         "filename": "azure/azure/event_listener/i18n.py",
         "patchSetId": 1
@@ -358,6 +706,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_57ad5187",
+        "filename": "azure/azure/event_listener/i18n.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure which license to include in here. It would be of great help if you can guide me on this.",
+      "parentUuid": "1a76adc5_09582f31",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_295deb21",
         "filename": "azure/azure/event_listener/server.py",
         "patchSetId": 1
@@ -369,6 +741,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "This requires the license header",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_37bc55bb",
+        "filename": "azure/azure/event_listener/server.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "I\u0027m not sure which license to keep here. Please let me know which one to be used.",
+      "parentUuid": "1a76adc5_295deb21",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -427,6 +823,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d7b081df",
+        "filename": "azure/azure/pub/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_a9481b5c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_4975c796",
         "filename": "azure/azure/pub/config/__init__.py",
         "patchSetId": 1
@@ -438,6 +858,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "The content of this file is not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_f7b57dcd",
+        "filename": "azure/azure/pub/config/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_4975c796",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -473,6 +917,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_97ca094e",
+        "filename": "azure/azure/pub/database/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_697a038a",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_c968f7bc",
         "filename": "azure/azure/pub/exceptions.py",
         "patchSetId": 1
@@ -490,6 +958,24 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_b7c70545",
+        "filename": "azure/azure/pub/exceptions.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_c968f7bc",
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_e965b3e1",
         "filename": "azure/azure/pub/msapi/__init__.py",
         "patchSetId": 1
@@ -501,6 +987,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "the content of this file is not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 74
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_57c4713f",
+        "filename": "azure/azure/pub/msapi/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_e965b3e1",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -536,6 +1046,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_97f8c97d",
+        "filename": "azure/azure/pub/msapi/extsys.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_097d8f6e",
+      "range": {
+        "startLine": 30,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 56
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_2982cb4f",
         "filename": "azure/azure/pub/utils/__init__.py",
         "patchSetId": 1
@@ -547,6 +1081,30 @@
       "writtenOn": "2018-08-13T20:11:48Z",
       "side": 1,
       "message": "This content is not needed",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 73
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_77c16d2d",
+        "filename": "azure/azure/pub/utils/__init__.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_2982cb4f",
       "range": {
         "startLine": 1,
         "startChar": 0,
@@ -582,6 +1140,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_57db111b",
+        "filename": "azure/azure/swagger/urls.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Added the version 1 API in urls.\nWill add the implementation for the same in the sub-sequent commits.",
+      "parentUuid": "1a76adc5_ef65b3e1",
+      "range": {
+        "startLine": 31,
+        "startChar": 38,
+        "endLine": 31,
+        "endChar": 45
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_4f4e2771",
         "filename": "azure/run.sh",
         "patchSetId": 1
@@ -593,6 +1175,30 @@
       "writtenOn": "2018-08-14T01:24:20Z",
       "side": 1,
       "message": "The port should be a new one and dedicated to azure plugin. Please coordinate with the team to make sure there is no collision on the port allocation. I believe you should be able to take 9008",
+      "range": {
+        "startLine": 34,
+        "startChar": 24,
+        "endLine": 34,
+        "endChar": 28
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_37e3f5da",
+        "filename": "azure/run.sh",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Changed the port to 9008.",
+      "parentUuid": "1a76adc5_4f4e2771",
       "range": {
         "startLine": 34,
         "startChar": 24,
@@ -628,6 +1234,30 @@
     },
     {
       "key": {
+        "uuid": "1a76adc5_d7e721e3",
+        "filename": "azure/version.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_6f7a038a",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 7
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a76adc5_0f6fcfc6",
         "filename": "pom.xml",
         "patchSetId": 1
@@ -639,6 +1269,30 @@
       "writtenOn": "2018-08-14T01:24:20Z",
       "side": 1,
       "message": "please align to other plugins, e.g. 1.2.0-XXX for C release",
+      "range": {
+        "startLine": 27,
+        "startChar": 13,
+        "endLine": 27,
+        "endChar": 27
+      },
+      "revId": "7c68144839092fe342034730b8212b2b262c7fd0",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_97d1a9fd",
+        "filename": "pom.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1209
+      },
+      "writtenOn": "2018-08-16T08:41:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a76adc5_0f6fcfc6",
       "range": {
         "startLine": 27,
         "startChar": 13,
