@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_dbc8ab76",
+        "filename": "azure/azure/pub/utils/restcall.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-16T09:44:20Z",
+      "side": 1,
+      "message": "amdocs copyright should be appended here",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 38
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_9ba233ad",
+        "filename": "azure/azure/swagger/urls.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-16T09:44:20Z",
+      "side": 1,
+      "message": "are you sure that the same class can support different API?",
+      "range": {
+        "startLine": 34,
+        "startChar": 8,
+        "endLine": 34,
+        "endChar": 16
+      },
+      "revId": "a55292c6d0d5e05bf97f0c2ac7101e0bb0de4bfa",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
