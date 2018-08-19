@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_7a106801",
+        "filename": "azure/azure/api_v2/api_definition/networks.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2018-08-19T06:00:16Z",
+      "side": 1,
+      "message": "how to support many networks.",
+      "revId": "b37768fdbae937d902baaa0aaf1e5de4889ab911",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ba0600cd",
+        "filename": "azure/run.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 2363
+      },
+      "writtenOn": "2018-08-19T06:00:16Z",
+      "side": 1,
+      "message": "add four blanks",
+      "revId": "b37768fdbae937d902baaa0aaf1e5de4889ab911",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
