@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_3d266acf",
+        "filename": "azure/docker/Dockerfile",
+        "patchSetId": 8
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-20T07:41:39Z",
+      "side": 1,
+      "message": "The Dockerfile seems not correct, azure should have its own artifact and tag, please update it.",
+      "range": {
+        "startLine": 22,
+        "startChar": 91,
+        "endLine": 22,
+        "endChar": 178
+      },
+      "revId": "58843bbc034e560d699579714e877e5ed4b0bf0a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_5d21e6b2",
+        "filename": "azure/docker/build_image.sh",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1889
+      },
+      "writtenOn": "2018-08-20T07:41:39Z",
+      "side": 1,
+      "message": "The version should be aligned to Casablanca versioning in MultiCloud, 1.2.0-xxx",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 23
+      },
+      "revId": "58843bbc034e560d699579714e877e5ed4b0bf0a",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
