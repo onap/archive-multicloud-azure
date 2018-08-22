@@ -15,7 +15,6 @@
 import pecan
 from pecan import rest
 
-from azure.api_v2.api_router import controller_builder
 from azure.api_v2.api_router import swagger_json
 
 
@@ -46,4 +45,4 @@ pecan.route(V0_Controller, "swagger.json", swagger_json.SwaggerJson())
 
 
 # Insert API stem from yaml files.
-controller_builder.insert_dynamic_controller(V0_Controller)
+# controller_builder.insert_dynamic_controller(V0_Controller)
