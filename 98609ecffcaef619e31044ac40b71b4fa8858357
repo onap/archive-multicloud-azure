@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_8a2de448",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2018-08-22T13:28:59Z",
+      "side": 1,
+      "message": "nit: can you include a paragraph that explains the reason for this change? It seems like it\u0027s removing code to increase the code coverage, is this code not necessary? It that\u0027s the case, why it was submitted at the beginning?",
+      "revId": "98609ecffcaef619e31044ac40b71b4fa8858357",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_ea1578e5",
+        "filename": "azure/azure/tests/test_syscomm.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2018-08-22T13:28:59Z",
+      "side": 1,
+      "message": "nit: avoid the usage of break line characters\n\n    param \u003d {\n                \"auth\": {\n                    \"tenantName\": \"12345\",\n                    \"passwordCredentials\": {\n                        \"username\": \"admin\",\n                        \"password\": \"admin\"\n                    }\n                }\n            }",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 13
+      },
+      "revId": "98609ecffcaef619e31044ac40b71b4fa8858357",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
