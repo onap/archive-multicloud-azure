@@ -22,3 +22,4 @@ azure/dist
 azure/1.25.0
 azure/*.egg-info
 azure/logs/*.log
+azure/coverage.xml
