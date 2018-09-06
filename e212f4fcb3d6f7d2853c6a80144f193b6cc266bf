@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a76adc5_9c6ac5ec",
+        "filename": "azure/multicloud_azure/pub/vim/vimapi/baseclient.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2018-09-06T15:12:28Z",
+      "side": 1,
+      "message": "nit: I suggest to follow the OpenStack import guidelines and separate them in three groups\n\n  * https://docs.openstack.org/hacking/latest/user/hacking.html#imports",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 56
+      },
+      "revId": "e212f4fcb3d6f7d2853c6a80144f193b6cc266bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_1c76b5d7",
+        "filename": "azure/multicloud_azure/pub/vim/vimapi/compute/OperateFlavors.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2018-09-06T15:12:28Z",
+      "side": 1,
+      "message": "shouldn\u0027t you have to import using this full qualified name?",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "e212f4fcb3d6f7d2853c6a80144f193b6cc266bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_bc7ea1ad",
+        "filename": "azure/multicloud_azure/pub/vim/vimsdk/azure_credentials.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2018-09-06T15:12:28Z",
+      "side": 1,
+      "message": "nit: s/ClientObj/Client",
+      "range": {
+        "startLine": 16,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "e212f4fcb3d6f7d2853c6a80144f193b6cc266bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a76adc5_dc527d34",
+        "filename": "azure/multicloud_azure/pub/vim/vimsdk/sdk.py",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 947
+      },
+      "writtenOn": "2018-09-06T15:12:28Z",
+      "side": 1,
+      "message": "you can also use this:\n\n    params \u003d params or {}",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 19
+      },
+      "revId": "e212f4fcb3d6f7d2853c6a80144f193b6cc266bf",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
