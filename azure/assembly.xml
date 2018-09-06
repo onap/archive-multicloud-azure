@@ -20,8 +20,8 @@
     </formats>
     <fileSets>
         <fileSet>
-            <directory>azure</directory>
-            <outputDirectory>/azure</outputDirectory>
+            <directory>multicloud_azure</directory>
+            <outputDirectory>/multicloud_azure</outputDirectory>
             <includes>
                 <include>**/*.py</include>
                 <include>**/*.json</include>
@@ -61,6 +61,6 @@
             </includes>
         </fileSet>
     </fileSets>
-    <baseDirectory>azure</baseDirectory>
+    <baseDirectory>multicloud_azure</baseDirectory>
     <!--baseDirectory>multivimdriver-openstack/azure</baseDirectory-->
 </assembly>

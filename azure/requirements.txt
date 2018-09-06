@@ -37,3 +37,9 @@ oslo.config>=4.11.0
 oslo.service>=1.25.0
 eventlet>=0.20.0
 PyYAML>=3.1.0
+
+#azure
+azure-mgmt-resource==2.0.0
+azure-mgmt-compute==4.0.1
+azure-mgmt-authorization==0.50.0
+azure-common==1.1.14
