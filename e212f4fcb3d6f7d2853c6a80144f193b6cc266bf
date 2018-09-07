@@ -1,0 +1,8 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Bin Hu <bh526r@att.com>
+Code-Review+1: Victor Morales <victor.morales@intel.com>
+Submitted-by: Sudhakar Reddy <Sudhakar.Reddy@amdocs.com>
+Submitted-at: Fri, 07 Sep 2018 04:51:02 +0000
+Reviewed-on: https://gerrit.onap.org/r/64959
+Project: multicloud/azure
+Branch: refs/heads/master
