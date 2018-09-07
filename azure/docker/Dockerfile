@@ -22,8 +22,8 @@ RUN  cd /opt/ && \
     wget -q -O multicloud-azure.zip 'https://nexus.onap.org/service/local/artifact/maven/redirect?r=snapshots&g=org.onap.multicloud.azure&a=multicloud-azure&v=LATEST&e=zip' && \
     unzip multicloud-azure.zip && \
     rm -rf multicloud-azure.zip && \
-    pip install -r azure/requirements.txt
+    pip install -r multicloud_azure/requirements.txt
 
 
 WORKDIR /opt
-ENTRYPOINT azure/docker/docker-entrypoint.sh
+ENTRYPOINT multicloud_azure/docker/docker-entrypoint.sh
