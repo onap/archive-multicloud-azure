@@ -1,4 +1,3 @@
-#!/bin/bash
 # Copyright (c) 2018 Amdocs
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -11,5 +10,11 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
-# ps auxww | grep 'manage.py runserver 0.0.0.0:9004' | awk '{print $2}' | xargs kill -9
-ps auxww |grep 'uwsgi --http :9004 --module multicloud_azure.wsgi --master' |awk '{print $2}' |xargs kill -9
+from multicloud_azure.pub.vim.vimapi.baseclient import baseclient
+
+
+def create_connection(params):
+    if params is None:
+        params = {}
+    client = baseclient.get_compute_client(params)
+    return client
