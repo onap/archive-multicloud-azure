@@ -17,6 +17,37 @@ from multicloud_azure.pub.utils.restcall import AAIClient
 logger = logging.getLogger(__name__)
 
 
+def encode_vim_id(cloud_owner, cloud_region_id):
+    '''
+    compose vim_id by cloud_owner and cloud_region, make sure the vimid can be
+    converted back when talking to AAI,etc.
+    This is a backward compatibility design to reuse the existing
+    implementation code
+    :param cloud_owner:
+    :param cloud_region:
+    :return:
+    '''
+
+    # since the {cloud_owner}/{cloud_region_id"} is globally unique, the
+    # concatenated one as below will be unique as well.
+
+    vim_id = cloud_owner + "_" + cloud_region_id
+
+    # other options:
+    # 1, store it into cache so the decode and just look up the cache for
+    # decoding
+    # 2, use other delimiter in case that '_' was used by
+    # cloud owner/cloud region id,
+    # e.g. '.', '#', hence the decode need to try more than one time
+
+    return vim_id
+
+
+def decode_vim_id(vim_id):
+    # m = re.search(r'^([0-9a-zA-Z-]+)_([0-9a-zA-Z_-]+)$', vim_id)
+    # cloud_owner, cloud_region_id = m.group(1), m.group(2)
+    return split_vim_to_owner_region(vim_id)
+
 def split_vim_to_owner_region(vim_id):
     split_vim = vim_id.split('_')
     cloud_owner = split_vim[0]

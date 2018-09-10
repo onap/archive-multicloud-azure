@@ -20,7 +20,8 @@ from multicloud_azure.swagger.views.swagger_json import SwaggerJsonView
 # Registry
 from multicloud_azure.swagger.views.registry.views import Registry
 from multicloud_azure.swagger.views.registry.views import UnRegistry
-
+from multicloud_azure.swagger.views.registry.views import APIv1Registry
+from multicloud_azure.swagger.views.registry.views import APIv1UnRegistry
 
 urlpatterns = [
     # swagger
@@ -29,8 +30,15 @@ urlpatterns = [
     # Registry
     url(r'^api/multicloud-azure/v0/(?P<vimid>[0-9a-z-A-Z\-\_]+)/registry$',
         Registry.as_view()),
+
     url(r'^api/multicloud-azure/v0/(?P<vimid>[0-9a-z-A-Z\-\_]+)$',
         UnRegistry.as_view()),
+
+    url(r'^api/multicloud-azure/v1/(?P<cloud_owner>[0-9a-zA-Z_-]+)' r'/(?P<cloud_region_id>[0-9a-zA-Z_-]+)/registry$',
+        APIv1Registry.as_view()),
+
+    url(r'^api/multicloud-azure/v1/(?P<cloud_owner>[0-9a-zA-Z_-]+)' r'/(?P<cloud_region_id>[0-9a-zA-Z_-]+)$',
+        APIv1UnRegistry.as_view()),
 
 ]
 
