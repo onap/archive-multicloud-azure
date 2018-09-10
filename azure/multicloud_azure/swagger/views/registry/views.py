@@ -85,3 +85,17 @@ class UnRegistry(APIView):
             return Response(data=e.message,
                             status=status.HTTP_500_INTERNAL_SERVER_ERROR)
         return Response(data="", status=status.HTTP_204_NO_CONTENT)
+
+
+class APIv1Registry(Registry):
+
+    def post(self, request, cloud_owner, cloud_region_id):
+        vimid = extsys.encode_vim_id(cloud_owner, cloud_region_id)
+        return super(APIv1Registry, self).post(request, vimid)
+
+
+class APIv1UnRegistry(UnRegistry):
+
+    def delete(self, request, cloud_owner, cloud_region_id):
+        vimid = extsys.encode_vim_id(cloud_owner, cloud_region_id)
+        return super(APIv1UnRegistry, self).delete(request, vimid)
