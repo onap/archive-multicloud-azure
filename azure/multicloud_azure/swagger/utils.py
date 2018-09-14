@@ -29,7 +29,6 @@ def get_swagger_json_data():
     # f.close()
     # json_data["paths"].update(json_data_temp["paths"])
     # json_data["definitions"].update(json_data_temp["definitions"])
-
     json_data["basePath"] = "/api/multicloud-azure/v0/"
     json_data["info"]["title"] = "MultiVIM driver \
     of Microsoft Azure Service NBI"
