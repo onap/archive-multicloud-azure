@@ -35,3 +35,9 @@ class SyscommTest(unittest.TestCase):
                 }
             }
         self.assertEquals(True, syscomm.verifyKeystoneV2(param))
+
+    def test_json_response(self):
+        data = "abcde"
+        res = data
+        content_type = "text/plain"
+        self.assertEquals((res, content_type), syscomm.jsonResponse(data))
