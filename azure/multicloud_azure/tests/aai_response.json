@@ -1,0 +1,54 @@
+{
+  "cloud-owner": "ATT",
+  "cloud-region-id": "eastus2",
+  "cloud-type": "azure",
+  "owner-defined-type": "owner-defined-type",
+  "cloud-region-version": "1.0",
+  "cloud-zone": "cloud zone",
+  "complex-name": "complex name",
+  "sriov-automation": false,
+  "cloud-extra-info": "{\"subscription_id\": \"test-sub-id\"}",
+  "resource-version": "1534835073750",
+  "tenants": {
+    "tenant": [
+      {
+        "tenant-id": "76486749673496734634634",
+        "tenant-name": "vfw-demo",
+        "resource-version": "1534835073868",
+        "relationship-list": {
+          "relationship": [
+            {
+              "related-to": "service-subscription",
+              "related-link": "/aai/v11/business/customers/customer/amdocs/service-subscriptions/service-subscription/INFRA",
+              "relationship-data": [
+                {
+                  "relationship-key": "customer.global-customer-id",
+                  "relationship-value": "amdocs"
+                },
+                {
+                  "relationship-key": "service-subscription.service-type",
+                  "relationship-value": "INFRA"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "esr-system-info-list": {
+    "esr-system-info": [
+      {
+        "esr-system-info-id": "82badd77-82b3-4d37-ab2e-fb258ae55611",
+        "service-url": "http://10.247.134.140:5000/v3",
+        "user-name": "test-user-id",
+        "password": "test-client",
+        "system-type": "VIM",
+        "ssl-insecure": true,
+        "cloud-domain": "default",
+        "default-tenant": "test-tenant-id",
+        "resource-version": "1534835073979"
+      }
+    ]
+  }
+}

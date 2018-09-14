@@ -10,6 +10,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
+from multicloud_azure.pub.exceptions import VimDriverAzureException
 from azure.common.credentials import ServicePrincipalCredentials
 
 
@@ -22,7 +23,11 @@ class ClientObj(object):
         CLIENT = params['username']
         KEY = params['password']
 
-        credentials = ServicePrincipalCredentials(client_id=CLIENT,
-                                                  secret=KEY, tenant=TENANT_ID)
+        try:
+            cred = ServicePrincipalCredentials(client_id=CLIENT,
+                                               secret=KEY, tenant=TENANT_ID)
+        except Exception as e:
+            raise VimDriverAzureException(status_code=e.args,
+                                          message=e.message)
 
-        return credentials
+        return cred
