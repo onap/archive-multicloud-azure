@@ -13,15 +13,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-sed -i "s/MSB_SERVICE_IP =.*/MSB_SERVICE_IP = \"${MSB_ADDR}\"/g" azure/pub/config/config.py
-sed -i "s/MSB_SERVICE_PORT =.*/MSB_SERVICE_PORT = \"${MSB_PORT}\"/g" azure/pub/config/config.py
-sed -i "s/AAI_ADDR =.*/AAI_ADDR = \"${AAI_ADDR}\"/g" azure/pub/config/config.py
-sed -i "s/AAI_PORT =.*/AAI_PORT = \"${AAI_PORT}\"/g" azure/pub/config/config.py
-sed -i "s/AAI_SCHEMA_VERSION =.*/AAI_SCHEMA_VERSION = \"${AAI_SCHEMA_VERSION}\"/g" azure/pub/config/config.py
-sed -i "s/AAI_USERNAME =.*/AAI_USERNAME = \"${AAI_USERNAME}\"/g" azure/pub/config/config.py
-sed -i "s/AAI_PASSWORD =.*/AAI_PASSWORD = \"${AAI_PASSWORD}\"/g" azure/pub/config/config.py
-sed -i "s/MR_ADDR =.*/MR_ADDR = \"${MR_ADDR}\"/g" azure/pub/config/config.py
-sed -i "s/MR_PORT =.*/MR_PORT = \"${MR_PORT}\"/g" azure/pub/config/config.py
+sed -i "s/MSB_SERVICE_IP =.*/MSB_SERVICE_IP = \"${MSB_ADDR}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/MSB_SERVICE_PORT =.*/MSB_SERVICE_PORT = \"${MSB_PORT}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/AAI_ADDR =.*/AAI_ADDR = \"${AAI_ADDR}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/AAI_PORT =.*/AAI_PORT = \"${AAI_PORT}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/AAI_SCHEMA_VERSION =.*/AAI_SCHEMA_VERSION = \"${AAI_SCHEMA_VERSION}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/AAI_USERNAME =.*/AAI_USERNAME = \"${AAI_USERNAME}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/AAI_PASSWORD =.*/AAI_PASSWORD = \"${AAI_PASSWORD}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/MR_ADDR =.*/MR_ADDR = \"${MR_ADDR}\"/g" multicloud_azure/pub/config/config.py
+sed -i "s/MR_PORT =.*/MR_PORT = \"${MR_PORT}\"/g" multicloud_azure/pub/config/config.py
 
 
 logDir="/var/log/onap/multicloud/azure"

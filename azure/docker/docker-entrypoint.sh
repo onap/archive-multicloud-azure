@@ -32,17 +32,17 @@ echo
 echo
 
 # Configure service based on docker environment variables
-azure/docker/instance-config.sh
+multicloud_azure/docker/instance-config.sh
 
 
 # Perform one-time config
 if [ ! -e init.log ]; then
 
     # microservice-specific one-time initialization
-    azure/docker/instance-init.sh
+    multicloud_azure/docker/instance-init.sh
 
     date > init.log
 fi
 
 # Start the microservice
-azure/docker/instance-run.sh
+multicloud_azure/docker/instance-run.sh

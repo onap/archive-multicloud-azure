@@ -13,7 +13,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-cd ./azure
+cd ./multicloud_azure
 ./run.sh
 
 while [ ! -f /var/log/onap/multicloud/azure/azure.log ]; do
