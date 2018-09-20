@@ -1,0 +1,43 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+relationship_types:
+
+  tosca.relationships.nfv.VirtualBindsTo:
+    _extensions:
+      shorthand_name: VirtualBindsTo
+      type_qualified_name: tosca:VirtualBindsTo
+      specification: tosca-simple-nfv-1.0
+      specification_section: 5.7.1
+      specification_url: 'http://docs.oasis-open.org/tosca/tosca-nfv/v1.0/csd04/tosca-nfv-v1.0-csd04.html#_Toc482896074'
+    description: >-
+      This relationship type represents an association relationship between VDU and CP node types.
+    derived_from: tosca.relationships.DependsOn
+    valid_target_types: [ tosca.capabilities.nfv.VirtualBindable ]
+
+  # ARIA NOTE: csd04 lacks the definition of tosca.relationships.nfv.Monitor (the derived_from and
+  # valid_target_types), so we are using the definition in csd03 section 8.4.2.
+  tosca.relationships.nfv.Monitor:
+    _extensions:
+      shorthand_name: Monitor
+      type_qualified_name: tosca:Monitor
+      specification: tosca-simple-nfv-1.0
+      specification_section: 5.7.2
+      specification_url: 'http://docs.oasis-open.org/tosca/tosca-nfv/v1.0/csd04/tosca-nfv-v1.0-csd04.html#_Toc482896075'
+    description: >-
+      This relationship type represents an association relationship to the Metric capability of VDU
+      node types.
+    derived_from: tosca.relationships.ConnectsTo
+    valid_target_types: [ tosca.capabilities.nfv.Metric ]

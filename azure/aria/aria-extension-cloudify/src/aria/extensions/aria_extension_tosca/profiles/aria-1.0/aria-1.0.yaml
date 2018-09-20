@@ -1,0 +1,97 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+policy_types:
+
+  aria.Plugin:
+    _extensions:
+      shorthand_name: Plugin
+      type_qualified_name: aria:Plugin
+      role: plugin
+    description: >-
+      Policy used to specify plugins used by services. For an operation to be able to use a plugin
+      it must have a matching policy. The name of the policy must be the name of the plugin. The
+      optional properties can be used to further specify plugin selection by the orchestrator.
+    derived_from: tosca.policies.Root
+    properties:
+      version:
+        description: >-
+          Minimum plugin version.
+        type: version
+        required: false
+      enabled:
+        description: >-
+          If the policy is to disable the plugin then it will be ignored and all operations and
+          workflows depending on it will also be disabled.
+        type: boolean
+        default: true
+
+  aria.Workflow:
+    _extensions:
+      shorthand_name: Workflow
+      type_qualified_name: aria:Workflow
+      role: workflow
+    description: >-
+      Policy used to specify custom workflows. A workflow is usually a workload of interconnected
+      calls to operations on nodes and relationships in the service topology. The name of the policy
+      is used as the name of the workflow. Note that it can be the same name as one of the normative
+      lifecycle workflows ("install", "uninstall", etc.), in which case it would be considered an
+      override of the default behavior. If the workflow requires parameters then this base type
+      should be inherited and extended with additional properties.
+    derived_from: tosca.policies.Root
+    properties:
+      implementation:
+        description: >-
+          The interpretation of the implementation string depends on the orchestrator. In ARIA it is
+          the full path to a Python @workflow function that generates a task graph based on the
+          service topology.
+        type: string
+
+  aria.Scaling:
+    _extensions:
+      type_qualified_name: aria:Scaling
+      role: scaling
+    description: >-
+      Scaling.
+    derived_from: tosca.policies.Scaling
+    properties:
+      min_instances:
+        description: >-
+          This property is used to indicate the minimum number of instances that should be created
+          for the associated TOSCA Node Template by a TOSCA orchestrator.
+        type: integer
+        default: 1
+        constraints:
+          - greater_or_equal: 0
+      max_instances:
+        description: >-
+          This property is used to indicate the maximum number of instances that should be created
+          for the associated TOSCA Node Template by a TOSCA orchestrator.
+        type: integer
+        default: 1
+        constraints:
+          - greater_or_equal: 0
+      default_instances:
+        description: >-
+          An optional property that indicates the requested default number of instances that should
+          be the starting number of instances a TOSCA orchestrator should attempt to allocate. Note:
+          The value for this property MUST be in the range between the values set for
+          "min_instances" and "max_instances" properties.
+        type: integer
+        constraints:
+          - greater_or_equal: 0
+        required: false
+    targets:
+      - tosca.nodes.Root
