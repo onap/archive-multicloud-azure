@@ -26,4 +26,5 @@ RUN  cd /opt/ && \
 
 
 WORKDIR /opt
+RUN chmod +x multicloud_azure/docker/*.sh && chmod +x multicloud_azure/*.sh
 ENTRYPOINT multicloud_azure/docker/docker-entrypoint.sh
