@@ -1,0 +1,1981 @@
+#
+# Copyright (c) 2017 GigaSpaces Technologies Ltd. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License. You may obtain
+# a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+#
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+
+topology_template:
+  policies:
+    cloudify-azure-plugin:
+      description: >-
+        azure plugin executes operations.
+      type: aria.Plugin
+      properties:
+        version: 1.4.2
+
+
+data_types:
+
+  aria.azure.datatypes.Config:
+    description: >-
+      azure configuration
+    properties:
+      subscription_id:
+        description: >
+          A Microsoft Azure subscription ID. This is a unique
+          user account in Azure. This can be found in the
+          Subscriptions tab on your dashboard.
+        type: string
+        required: false
+      tenant_id:
+        description: >
+          A Microsoft Azure tenant ID. This can be found in
+          the Azure Active Directory dashboard by accessing
+          your directory. Open the Application Endpoints
+          dialog and your tenant ID will be in the URL for
+          the OAUTH2.0 TOKEN ENDPOINT.
+        type: string
+        required: false
+      client_id:
+        description: >
+          A Microsoft Azure client ID. This can be found in
+          the Azure Active Directory dashboard by accessing
+          your directory. View the Applications tab and select
+          the application used to access Azure APIs.  Your
+          client ID can be found by expanding the ACCESS WEB
+          APIS IN OTHER APPLICATIONS tab.
+        type: string
+        required: false
+      client_secret:
+        description: >
+          A Microsoft Azure client secret key. This can be found
+          or generated in the same location as your client ID.
+        type: string
+        required: false
+      scale_name_separator:
+        description: >
+          When scaling resources, a unique name must be sent to
+          the Azure API. Since names are left to the user to
+          manage (the service does not generate unique IDs),
+          this plugin will attempt to append characters or
+          numbers to the end of the resource name when resources
+          are scaled out. This value should be a character, or
+          characters, that will separate the base name from the
+          generated unique characters.  For instance, if the
+          base name of a resource is "myvm", the separator is
+          set to "_", and a scale workflow attempts to create
+          another resource, the resulting name could be
+          something like "myvm_1". This field can be left blank.
+        type: string
+        required: false
+        default: "_"
+      scale_name_suffix_chars:
+        description: >
+          A string of characters (ASCII) to be used when
+          generating unique suffix data when scaling resources.
+          See "scale_name_separator" for more information.
+        type: string
+        required: true
+        default: "1234567890"
+
+  aria.azure.datatypes.AgentConfig:
+    properties:
+      install_method:
+        type: string
+        required: false
+      port:
+        type: integer
+        required: false
+
+
+  aria.azure.datatypes.StorageAccountConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163564.aspx
+    properties:
+      accountType:
+        description: >
+          An storage account type (case sensitive)
+        type: string
+        default: Standard_LRS
+        required: true
+
+  aria.azure.datatypes.DataDiskConfig:
+    properties:
+      container_name:
+        type: string
+        description: >
+          Container for the resource.
+        default: vhds
+      size:
+        description: >
+          Size of the Page Blob (Azure disk) in GiB. Maximum of 1023 GiB allowed.
+        type: integer
+        default: 20
+        required: true
+      force_delete:
+        description: >
+          If set to true, the resource's "delete" lifecycle will purge the
+          Azure Data Disk from the Azure Storage Account. If false, the
+          Data Disk is left as-is in the Storage Account.
+        type: boolean
+        default: false
+
+
+  aria.azure.datatypes.FileShareConfig:
+    properties:
+      metadata:
+        description: >
+          Metadata (dict) for the File Share
+        required: false
+        type: string
+      quota:
+        description: >
+          Quote, in GiB, for the maximum size of the file share
+        required: false
+        type: integer
+      fail_on_exist:
+        description: >
+          If true, causes the operation to raise a NonRecoverableError if
+          the file share already exists. If false, issues a warning and
+          continues execution.
+        default: false
+        type: boolean
+
+  aria.azure.datatypes.AddressSpace:
+    description: >
+      Contains the address prefix,typically network CIDR
+    properties:
+      addressPrefixes:
+        required: true
+        type: list
+        entry_schema: string
+
+  aria.azure.datatypes.VirtualNetworkConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163661.aspx
+    properties:
+      addressSpace:
+        default:
+          addressPrefixes:
+          - 172.16.0.0/16
+        required: true
+        type: aria.azure.datatypes.AddressSpace
+      dhcpOptions:
+        required: false
+        type: string
+      subnets:
+        required: false
+        type: string
+
+  aria.azure.datatypes.NetworkSecurityGroupConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163656.aspx
+    properties:
+      securityRules:
+        required: false
+        type: list
+        entry_schema: string
+
+
+
+  aria.azure.datatypes.NetworkSecurityRuleConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163645.aspx
+    properties:
+      description:
+        type: string
+        required: false
+      protocol:
+        type: string
+        required: true
+      sourcePortRange:
+        type: string
+        required: false
+      destinationPortRange:
+        type: string
+        required: false
+      sourceAddressPrefix:
+        type: string
+        required: true
+      destinationAddressPrefix:
+        type: string
+        required: true
+      access:
+        type: string
+        required: true
+      priority:
+        type: integer
+        required: true
+      direction:
+        type: string
+        required: true
+
+  aria.azure.datatypes.SubnetConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163621.aspx
+    properties:
+      addressPrefix:
+        type: string
+        required: false
+      networkSecurityGroup:
+        type: string
+        required: false
+      routeTable:
+        type: string
+        required: false
+
+
+
+
+
+
+
+  aria.azure.datatypes.RouteTableConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt502548.aspx
+    properties:
+      routes:
+        type: string
+        required: false
+
+
+  aria.azure.datatypes.RouteConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt459110.aspx
+    properties:
+      addressPrefix:
+        type: string
+        required: true
+      nextHopType:
+        type: string
+        required: true
+      nextHopIpAddress:
+        type: string
+        required: false
+
+
+  aria.azure.datatype.NetworkInterfaceDnsSettings:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163668.aspx
+    properties:
+      appliedDnsServers:
+        type: list
+        entry_schema: string
+        required: false
+      dnsServers:
+        type: list
+        entry_schema: string
+        required: false
+      internalDnsNameLabel:
+        type: string
+        required: false
+      internalDomainNameSuffix:
+        type: string
+        required: false
+      internalFqdn:
+        type: string
+        required: false
+
+
+  aria.azure.datatypes.NetworkInterfaceCardConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163668.aspx
+    properties:
+      networkSecurityGroups:
+        required: false
+        type: string
+      enableIPForwarding:
+        required: false
+        type: boolean
+      ipConfigurations:
+        required: false
+        type: string
+      dnsSettings:
+        required: false
+        type: aria.azure.datatype.NetworkInterfaceDnsSettings
+
+
+  aria.azure.datatypes.IPConfigurationConfig:
+    properties:
+      privateIPAddress:
+        type: string
+        description: >
+          Static, private IP Address
+        required: false
+      privateIPAllocationMethod:
+        type: string
+        description: >
+          Defines how a private IP address is assigned. Options
+          are Static or Dynamic
+        required: true
+      privateIPAddressVersion: 
+        type: string
+        description: >
+          Define the version of the IP protocol
+        required: false
+
+
+  aria.azure.datatypes.PublicIPAddressDnsSettings:
+    description: >
+      See https://docs.microsoft.com/en-gb/rest/api/virtualnetwork/PublicIPAddresses/CreateOrUpdate#definitions_publicipaddressdnssettings
+    properties:
+      domainNameLabel:
+        type: string
+        description: >
+          name refer to the VM
+        required: false
+      fqdn:
+        type: string
+        required: false
+      reverseFqdn:
+        type: string
+        required: false
+
+  aria.azure.datatypes.PublicIPAddressConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163590.aspx
+    properties:
+      publicIPAllocationMethod:
+        type: string
+        description: >
+          Defines whether the IP address is stable or dynamic.
+          Options are Static or Dynamic
+        required: true
+      publicIPAddressVersion:
+        type: string
+        description:
+          Define the version of the public IP.
+        required: false
+      idleTimeoutInMinutes:
+        type: integer
+        description: >
+          Specifies the timeout (in minutes) for the TCP idle connection.
+          The value can be set between 4 and 30 minutes
+        required: false
+      dnsSettings:
+        type: aria.azure.datatypes.PublicIPAddressDnsSettings
+        required: false
+#      domainNameLabel:
+#        type: string
+#        description: >
+#          The concatenation of the domain name label and the regionalized
+#          DNS zone make up the fully qualified domain name associated
+#          with the public IP address.
+#        required: false
+#      reverseFqdn:
+#        type: string
+#        description: >
+#          A fully qualified domain name that resolves to this
+#          public IP address.
+#        required: false
+
+
+
+
+
+
+  aria.azure.datatypes.AvailabilitySetConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163607.aspx
+    properties:
+      platformUpdateDomainCount:
+        type: integer
+        required: false
+      platformFaultDomainCount:
+        type: integer
+        required: false
+
+
+
+  aria.azure.datatypes.HardwareProfile:
+    properties:
+      vmSize:
+        required: true
+        type: string
+
+ 
+  aria.azure.datatypes.ImageReference:
+    properties:
+      publisher:
+        required: true
+        type: string
+      offer:
+        required: true
+        type: string
+      sku:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+
+ 
+  aria.azure.datatypes.StorageProfile:
+    properties:
+      imageReference:
+        required: true
+        type: aria.azure.datatypes.ImageReference
+
+
+
+
+  aria.azure.datatypes.PublicKey:
+    properties:
+      keydata:
+        required: true
+        type: string
+      path:
+        required: true
+        type: string
+
+  aria.azure.datatypes.SSH:
+    properties:
+      publicKeys:
+        required: false
+        type: list
+        entry_schema: aria.azure.datatypes.PublicKey
+
+
+  aria.azure.datatypes.LinuxConfiguration:
+    properties:
+      ssh:
+        required: false
+        type: aria.azure.datatypes.SSH
+      disablePasswordAuthentication:
+        required: false
+        default: true
+        type: boolean
+
+
+  aria.azure.datatypes.OSProfile:
+    properties:
+      computerName:
+        required: true
+        type: string
+      adminUserName:
+        required: true
+        type: string
+      adminPassword:
+        required: true
+        type: string
+      linuxConfiguration:
+        required: false
+        type: aria.azure.datatypes.LinuxConfiguration       
+
+
+
+  aria.azure.datatypes.VirtualMachineConfig:
+    description: >
+      https://msdn.microsoft.com/en-us/library/azure/mt163591.aspx
+    properties:
+      hardwareProfile:
+        required: true
+        type: aria.azure.datatypes.HardwareProfile
+      storageProfile:
+        required: true
+        type: aria.azure.datatypes.StorageProfile
+      osProfile:
+        required: true
+        type: aria.azure.datatypes.OSProfile
+
+  aria.azure.datatypes.LoadBalancerConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163574.aspx
+    properties:
+      frontendIPConfigurations:
+        required: false
+        type: string
+      backendAddressPools:
+        required: false
+        type: string
+      loadBalancingRules:
+        required: false
+        type: string
+      probes:
+        required: false
+        type: string
+      inboundNatRules:
+        required: false
+        type: string
+
+
+
+  aria.azure.datatypes.LoadBalancerProbeConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163574.aspx
+    properties:
+      protocol:
+        type: string
+        default: Tcp
+        required: true
+      port:
+        type: integer
+        required: true
+      requestPath:
+        type: string
+        required: false
+      intervalInSeconds:
+        type: integer
+        default: 5
+        required: true
+      numberOfProbes:
+        type: integer
+        default: 16
+        required: true
+
+  aria.azure.datatypes.LoadBalancerIncomingNATRuleConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163574.aspx
+    properties:
+      protocol:
+        type: string
+        default: Tcp
+        required: true
+      frontendPort:
+        type: integer
+        required: true
+      backendPort:
+        type: integer
+        required: true
+
+
+  aria.azure.datatypes.LoadBalancerRuleConfig:
+    description: >
+      See https://msdn.microsoft.com/en-us/library/mt163574.aspx
+    properties:
+      protocol:
+        type: string
+        default: Tcp
+        required: true
+      frontendPort:
+        type: integer
+        required: true
+      backendPort:
+        type: integer
+        required: true
+      enableFloatingIP:
+        type: boolean
+        required: false
+        default: false
+      idleTimeoutInMinutes:
+        type: integer
+        required: false
+        default: 5
+      loadDistribution:
+        type: string
+        required: false
+        default: Default
+
+
+
+
+
+interface_types:
+
+  aria.azure.interfaces.validation:
+    derived_from: tosca.interfaces.Root
+    creation:
+      description: >-
+        creation operation for the openstack validation interface
+    deletion:
+      description: >-
+        deletion operation for the openstack validation interface
+  aria.azure.interfaces.network:
+    derived_from: tosca.interfaces.Root
+    preconfigure:
+    establish: 
+    unlink: 
+
+node_types:
+
+  aria.azure.nodes.ResourceGroup:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource. Resource group name must be no longer than
+          80 characters long. It can contain only alphanumeric characters,
+          dash, underscore, opening parenthesis, closing parenthesis,
+          and period. The name cannot end with a period.
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:  
+        create: cloudify-azure-plugin > cloudify_azure.resources.resourcegroup.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.resourcegroup.delete
+
+
+
+
+
+
+
+  aria.azure.nodes.storage.StorageAccount:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource. Storage account name must be between
+          3 and 24 characters in length and use numbers and lower-case
+          letters only.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.StorageAccountConfig
+        required: true
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.storage.storageaccount.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.storage.storageaccount.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+
+
+
+  aria.azure.nodes.storage.DataDisk:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource (include any extension, such as .vhd).
+          Can be up to 80 characters in length and
+          contain lowercase letters, numbers, ".", and "_". Must start
+          with a number or lowercase letter and cannot end with
+          either "_" or "."
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.DataDiskConfig
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.storage.disk.create_data_disk
+        delete: cloudify-azure-plugin > cloudify_azure.resources.storage.disk.delete_data_disk
+    requirements:
+      - storage_account:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.storage.StorageAccount
+          relationship: cloudify.azure.relationships.contained_in_storage_account
+          occurrences: [ 0, UNBOUNDED ]
+
+  aria.azure.nodes.storage.FileShare:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource. Can be up to 63 characters in length and
+          contain lowercase letters, numbers, and dashes. Must start
+          with a number or lowercase letter and cannot contain
+          two consecutive dashes.
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.FileShareConfig
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create:  cloudify-azure-plugin > cloudify_azure.resources.storage.file.create_file_share
+
+
+
+
+  aria.azure.nodes.network.VirtualNetwork:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.VirtualNetworkConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.virtualnetwork.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.virtualnetwork.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+      - storage_account:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.storage.StorageAccount
+          relationship: cloudify.azure.relationships.virtual_network_depends_on_storage
+          occurrences: [ 0, UNBOUNDED ]
+
+
+
+  aria.azure.nodes.network.NetworkSecurityGroup:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.NetworkSecurityGroupConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.networksecuritygroup.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.networksecuritygroup.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+
+
+
+  aria.azure.nodes.network.NetworkSecurityRule:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      network_security_group_name:
+        type: string
+        description: >
+          Name of the Network Security Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Network Security Groupnode)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.NetworkSecurityRuleConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.networksecurityrule.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.networksecurityrule.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+      - network_security_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.NetworkSecurityGroup
+          relationship: cloudify.azure.relationships.nic_connected_to_network_security_group
+          occurrences: [ 0, UNBOUNDED ]
+
+
+
+  aria.azure.nodes.network.Subnet:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      virtual_network_name:
+        type: string
+        description: >
+          Name of the Virtual Network that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Virtual Network node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.SubnetConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.subnet.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.subnet.delete
+    requirements:
+      - virtual_network:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.VirtualNetwork
+          relationship: cloudify.azure.relationships.contained_in_virtual_network
+          occurrences: [ 0, UNBOUNDED ]
+      - subnet_dependency:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.Subnet
+          relationship: cloudify.azure.relationships.depends_on_subnet
+          occurrences: [ 0, UNBOUNDED ]
+          
+
+
+  aria.azure.nodes.network.RouteTable:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.RouteTableConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.routetable.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.routetable.delete
+    requirements:
+      - virtual_subnet:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.Subnet
+          relationship: cloudify.azure.relationships.route_table_attached_to_subnet
+          occurrences: [ 0, UNBOUNDED ]
+
+  aria.azure.nodes.network.Route:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      route_table_name:
+        type: string
+        description: >
+          Name of the Network Security Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Virtual Network node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.RouteConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.route.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.route.delete
+    requirements:
+      - route_table:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.RouteTable
+          relationship: cloudify.azure.relationships.depends_on_route_table
+          occurrences: [ 0, UNBOUNDED ]
+
+
+  aria.azure.nodes.network.NetworkInterfaceCard:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      primary:
+        description: >
+          When using multiple Network Interfaces, a primary must be set
+        required: false
+        default: false
+        type: boolean
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.NetworkInterfaceCardConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.networkinterfacecard.create
+        configure: cloudify-azure-plugin > cloudify_azure.resources.network.networkinterfacecard.configure
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.networkinterfacecard.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+      - ip_config:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.IPConfiguration
+          relationship: cloudify.azure.relationships.nic_connected_to_ip_configuration
+          occurrences: [ 0, UNBOUNDED ]
+      - security_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.NetworkSecurityGroup
+          relationship: cloudify.azure.relationships.nic_connected_to_network_security_group
+          occurrences: [ 0, UNBOUNDED ]
+
+  
+
+  aria.azure.nodes.network.IPConfiguration:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.IPConfigurationConfig
+        required: true
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    requirements:
+      - subnet:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.Subnet
+          relationship: cloudify.azure.relationships.ip_configuration_connected_to_subnet
+          occurrences: [ 0, UNBOUNDED ]
+      - ipaddress:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.PublicIPAddress
+          relationship: cloudify.azure.relationships.ip_configuration_connected_to_public_ip
+          occurrences: [ 0, UNBOUNDED ]
+          occurrences: [ 0, UNBOUNDED ]
+
+  aria.azure.nodes.network.PublicIPAddress:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.PublicIPAddressConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.publicipaddress.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.publicipaddress.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+
+  aria.azure.nodes.compute.AvailabilitySet:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.AvailabilitySetConfig
+        required: true
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.compute.availabilityset.create
+        delete: cloudify-azure-plugin > cloudify_azure.resources.compute.availabilityset.delete
+
+
+  aria.azure.nodes.compute.VirtualMachine:
+    derived_from: tosca.nodes.Compute
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      use_public_ip:
+        type: boolean
+        description: >
+          Tells the deployment to use the public IP (if available) of the resource
+          for Cloudify Agent connections
+        default: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      plan:
+        description: >
+          Specifies information about the marketplace image used to create the virtual
+          machine. This element is only used for marketplace images.
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.VirtualMachineConfig
+        required: true
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+      ip:
+        description: |
+          Property specifying the IP address of the resource to
+          use for the agent installer.
+        type: string
+        required: false
+      os_family:
+        description: |
+          Property specifying what type of operating system family
+          this compute node will run.
+        default: windows
+        type: string
+      agent_config:
+        type: aria.azure.datatypes.AgentConfig
+        default:
+          install_method: remote
+          port: 5985
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.create
+#        configure:
+#          implementation: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.configure
+#          inputs:
+#            command_to_execute:
+#              description: >
+#                This is the command that the CustomScriptExtension extension will
+#                execute. The file_uris below will be downloaded and this property
+#                should specify a command to start the execution of one of them.
+#              default: powershell -ExecutionPolicy Unrestricted -file ps_enable_winrm_http.ps1
+#            file_uris:
+#              default:
+#              - https://raw.githubusercontent.com/cloudify-cosmo/cloudify-azure-plugin/1.4/scripts/ps_enable_winrm_http.ps1
+        delete: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.delete
+    requirements:
+      - resource_group:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.ResourceGroup
+          relationship: cloudify.azure.relationships.contained_in_resource_group
+          occurrences: [ 0, UNBOUNDED ]
+      - nic:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.network.NetworkInterfaceCard
+          relationship: cloudify.azure.relationships.connected_to_nic
+          occurrences: [ 0, UNBOUNDED ]
+      - storage_account:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.storage.StorageAccount
+          relationship: cloudify.azure.relationships.connected_to_storage_account
+      - data_disk:
+          capability: tosca.capabilities.Node
+          node: aria.azure.nodes.storage.DataDisk
+          relationship: cloudify.azure.relationships.vm_connected_to_datadisk 
+          occurrences: [ 0, UNBOUNDED ]
+
+
+
+  aria.azure.nodes.network.LoadBalancer:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.LoadBalancerConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.create
+        configure: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.configure
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.delete
+
+
+
+
+  aria.azure.nodes.network.LoadBalancer.BackendAddressPool:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      load_balancer_name:
+        type: string
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.create_backend_pool
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.delete_backend_pool
+
+
+
+  aria.azure.nodes.network.LoadBalancer.Probe:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      load_balancer_name:
+        type: string
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.LoadBalancerProbeConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.create_probe
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.delete_probe
+
+
+  aria.azure.nodes.network.LoadBalancer.IncomingNATRule:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      load_balancer_name:
+        type: string
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.LoadBalancerIncomingNATRuleConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.create_incoming_nat_rule
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.delete_incoming_nat_rule
+
+
+
+  aria.azure.nodes.network.LoadBalancer.Rule:
+    derived_from: tosca.nodes.Root
+    properties:
+      name:
+        type: string
+        description: >
+          Name for the resource.
+        required: false
+      resource_group_name:
+        type: string
+        description: >
+          Name of the Resource Group that the existing resource belongs to
+          (this is only useful when not using a relationship between a resource
+          node and a Resource Group node)
+        required: false
+      load_balancer_name:
+        type: string
+        required: false
+      location:
+        type: string
+        description: >
+          Specifies the supported Azure location for the resource
+        required: false
+      tags:
+        description: >
+          Specifies a dictionary of one or more name and value pairs that describe a tag
+        required: false
+        type: string
+      resource_config:
+        description: >
+          A dictionary of values to pass as properties when creating the resource
+        type: aria.azure.datatypes.LoadBalancerRuleConfig
+        required: false
+      use_external_resource:
+        description: >
+          Indicate whether the resource exists or if Cloudify should create the resource
+        type: boolean
+        default: false
+        required: true
+      retry_after:
+        description: >
+          Overrides the Azure-specified "retry_after" response. This property
+          will set the number of seconds for each task retry interval (in the
+          case of iteratively checking the status of an asynchronous operation)
+        type: integer
+        required: false
+      azure_config:
+        description: >
+          A dictionary of values to pass to authenticate with the Azure API
+        type: aria.azure.datatypes.Config
+        required: false
+    interfaces:
+      Standard:
+        create: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.create_rule
+        delete: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.delete_rule
+  
+
+
+
+
+relationship_types:
+  cloudify.azure.relationships.contained_in_resource_group:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.contained_in_storage_account:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.contained_in_virtual_network:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.contained_in_network_security_group:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.contained_in_route_table:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.contained_in_load_balancer:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.depends_on_route_table:
+    derived_from: tosca.relationships.DependsOn
+
+  cloudify.azure.relationships.depends_on_subnet:
+    derived_from: tosca.relationships.DependsOn
+
+  cloudify.azure.relationships.virtual_network_depends_on_storage:
+    derived_from: tosca.relationships.DependsOn
+
+  cloudify.azure.relationships.network_security_group_attached_to_subnet:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        add_source: cloudify-azure-plugin > cloudify_azure.resources.network.subnet.attach_network_security_group
+        remove_source: cloudify-azure-plugin > cloudify_azure.resources.network.subnet.detach_network_security_group
+
+  cloudify.azure.relationships.route_table_attached_to_subnet:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        add_source: cloudify-azure-plugin > cloudify_azure.resources.network.subnet.attach_route_table
+        remove_source: cloudify-azure-plugin > cloudify_azure.resources.network.subnet.detach_route_table
+
+  cloudify.azure.relationships.nic_connected_to_network_security_group:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.nic_connected_to_ip_configuration:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        pre_configure_source: cloudify-azure-plugin > cloudify_azure.resources.network.networkinterfacecard.attach_ip_configuration
+
+  cloudify.azure.relationships.lb_connected_to_ip_configuration:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        preconfigure: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.attach_ip_configuration
+
+  cloudify.azure.relationships.ip_configuration_connected_to_subnet:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.ip_configuration_connected_to_public_ip:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.connected_to_storage_account:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.connected_to_data_disk:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        add_target: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.attach_disk
+        remove_target: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.detach_disk
+
+
+  cloudify.azure.relationships.connected_to_nic:
+    derived_from: tosca.relationships.ConnectsTo
+
+
+  cloudify.azure.relationships.connected_to_availability_set:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.connected_to_ip_configuration:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.connected_to_lb_be_pool:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.connected_to_lb_probe:
+    derived_from: tosca.relationships.ConnectsTo
+
+  cloudify.azure.relationships.vmx_contained_in_vm:
+    derived_from: tosca.relationships.HostedOn
+
+  cloudify.azure.relationships.nic_connected_to_lb_be_pool:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        add_target: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.attach_nic_to_backend_pool
+        remove_target: cloudify-azure-plugin > cloudify_azure.resources.network.loadbalancer.detach_nic_from_backend_pool
+
+  cloudify.azure.relationships.vm_connected_to_datadisk:
+    derived_from: tosca.relationships.ConnectsTo
+    interfaces:
+      Configure:
+        add_target:
+          implementation: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.attach_data_disk
+          inputs:
+            lun:
+              description: >
+                Specifies the logical unit number of the data disk in the VM
+              default: 0
+              required: true
+              type: integer
+        remove_target: cloudify-azure-plugin > cloudify_azure.resources.compute.virtualmachine.detach_data_disk
+
+
+

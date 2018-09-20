@@ -1,0 +1,38 @@
+tosca_definitions_version: tosca_simple_yaml_1_0
+
+node_types:
+
+  WebServer:
+    derived_from: tosca:Root
+    capabilities:
+      host:
+        type: tosca:Container
+
+  WebApp:
+    derived_from: tosca:WebApplication
+    properties:
+      port:
+        type: integer
+
+topology_template:
+
+  node_templates:
+    web_server:
+      type: WebServer
+
+    web_app:
+      type: WebApp
+      properties:
+        port: 9090
+      requirements:
+        - host: web_server
+      interfaces:
+        Standard:
+          configure: scripts/configure.sh
+          start: scripts/start.sh
+          stop: scripts/stop.sh
+
+  outputs:
+    port:
+      type: integer
+      value: { get_property: [ web_app, port ] }
