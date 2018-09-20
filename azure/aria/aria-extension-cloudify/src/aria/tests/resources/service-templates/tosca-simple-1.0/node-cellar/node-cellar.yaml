@@ -1,0 +1,357 @@
+# Licensed to the Apache Software Foundation (ASF) under one or more
+# contributor license agreements.  See the NOTICE file distributed with
+# this work for additional information regarding copyright ownership.
+# The ASF licenses this file to You under the Apache License, Version 2.0
+# (the "License"); you may not use this file except in compliance with
+# the License.  You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+# NFV is not used here, but we are using it just to validate the imports
+tosca_definitions_version: tosca_simple_profile_for_nfv_1_0
+#tosca_definitions_version: tosca_simple_yaml_1_0
+
+description: >-
+  Node Cellar TOSCA blueprint.
+  Here is some Unicode: 中國.
+
+metadata:
+  template_name: node-cellar
+  template_author: ARIA
+  template_version: '1.0.0'
+  aria_version: '0.0'
+
+imports:
+  - types/openstack.yaml
+  - types/nodejs.yaml
+  - types/mongodb.yaml
+  - types/nginx.yaml
+  - aria-1.0
+
+dsl_definitions:
+
+  default_openstack_credential: &DEFAULT_OPENSTACK_CREDENTIAL
+    user: openstackadmin
+    token: { concat: [ openstack, 123 ] }
+
+repositories:
+
+  node_cellar:
+    description: >-
+      The repository for the Node Cellar application and its dependencies.
+    url: https://github.com/ccoenraets/nodecellar/archive/
+    credential:
+      user: guest
+      token: ''
+
+interface_types:
+
+  Maintenance:
+    derived_from: tosca.interfaces.Root
+    inputs:
+      mode:
+        type: string
+        default: immediate
+        constraints:
+          - valid_values: [ immediate, eventual ]
+        description: >-
+          The mode in which maintenance mode is enabled/disabled.
+    enable:
+      description: >-
+        Enable maintenance mode.
+    disable:
+      description: >-
+        Disable maintenance mode.
+
+node_types:
+
+  NodeMongoApplication:
+    derived_from: nodejs.Application
+    interfaces:
+      Maintenance:
+        type: Maintenance
+    requirements:
+      - database:
+          capability: tosca.capabilities.Endpoint.Database
+          node: mongodb.Database
+
+topology_template:
+
+  inputs:
+    openstack_credential:
+      type: openstack.Credential
+      value: *DEFAULT_OPENSTACK_CREDENTIAL
+
+  node_templates:
+
+    # Application
+
+    node_cellar:
+      description: >-
+        Node Cellar Node.js web application.
+      type: NodeMongoApplication
+      artifacts:
+        node_cellar:
+          description: >-
+            The Node Cellar application package.
+          type: os.Archive
+          file: master.zip
+          repository: node_cellar
+          deploy_path: /opt/nodejs/applications/node-cellar
+          properties:
+            unpack_credential:
+              user: gigaspaces
+              token: { get_attribute: [ SELF, tosca_id ] }
+              #token: { get_property: [ SELF, app_endpoint, protocol ] }
+              #token: { get_property: [ HOST, flavor_name ] }
+              #token: { token: [ { get_property: [ HOST, flavor_name ] }, '.', 1 ] }
+              #token: { token: [ 'zero.one|two-three', '.|-', 3 ] }
+      interfaces:
+        Maintenance:
+          inputs:
+            mode: eventual
+          enable: maintenance_node_cellar.sh
+          disable: maintenance_node_cellar.sh
+        Standard:
+          create:
+            implementation:
+              primary: create_node_cellar.sh
+              dependencies:
+                - "process.args.1 > { get_attribute: [ SELF, tosca_id ] }"
+                - "process.args.2 > { get_property: [ HOST, flavor_name ] }"
+                - ssh.user > admin
+                - ssh.password > '1234'
+                - ssh.use_sudo > true
+      requirements:
+        - database: node_cellar_database
+      capabilities:
+        app_endpoint:
+          properties:
+            protocol: udp
+            url_path: /nodecellar
+
+    node_cellar_database:
+      description: >-
+        Node Cellar MongoDB database.
+      type: mongodb.Database
+      properties:
+        name: node_cellar
+      artifacts:
+        initial:
+          description: >-
+            The Node Cellar initial database.
+          type: mongodb.DatabaseDump
+          file: node-cellar.json
+          repository: node_cellar
+
+    # Server software
+
+    nodejs:
+      description: >-
+        Node.js instance.
+      type: nodejs.Server
+      requirements:
+        - host: application_host
+      capabilities:
+        data_endpoint:
+          properties:
+            url_path: /app
+      node_filter: # cannot be validated
+        properties:
+          #- flavor_name: { valid_values: [ {concat:[m1,.,small]} ] } # won't work because not validated :/
+          - flavor_name: { valid_values: [ m1.small ] }
+        capabilities:
+          - scalable:
+              properties:
+                - max_instances: { greater_or_equal: 5 }
+
+    mongodb:
+      description: >-
+        MongoDB instance.
+      type: mongodb.Server
+      requirements:
+        - host:
+            node: openstack.Instance
+            node_filter:
+              properties:
+                - flavor_name: { valid_values: [ m1.medium, { concat: [ { concat: [ m1, . ] }, large ] } ] }
+                #- flavor_name: { valid_values: [ m1.medium, m1.large ] }
+              capabilities:
+                - scalable:
+                    properties:
+                      - max_instances: { greater_or_equal: 5 }
+            relationship:
+              interfaces:
+                Configure:
+                  target_changed: changed.sh
+
+    nginx:
+      type: nginx.Nginx
+      requirements:
+        - host: loadbalancer_host
+        - feature: loadbalancer
+
+    # Features
+
+    loadbalancer:
+      type: nginx.LoadBalancer
+      properties:
+        algorithm: round-robin
+
+    # Hosts
+
+    loadbalancer_host:
+      description: >-
+        Host for the loadbalancer.
+      type: openstack.Instance
+      properties:
+        flavor_name: m1.small
+        os_users: # map of os.UserInfo
+          root:
+            password: admin123
+      interfaces:
+        Standard:
+          inputs:
+            openstack_credential: { get_input: openstack_credential }
+          configure:
+            implementation:
+              primary: juju > run_charm
+              dependencies:
+                - charm > loadbalancer
+
+    application_host:
+      copy: loadbalancer_host
+      description: >-
+        Host for applications.
+      properties:
+        flavor_name: m1.small
+        os_users: # map of os.UserInfo
+          nodejs:
+            password: nodejs123
+            groups:
+              - www-data
+      capabilities:
+        scalable:
+          properties:
+            max_instances: 5 # overrides the policy
+
+    data_host:
+      copy: loadbalancer_host
+      description: >-
+        Host for data.
+      properties:
+        flavor_name: m1.large
+        flavor_id: 5d62e82c-924e-4fa9-b1e4-c133867596f7
+        os_users: # map of os.UserInfo
+          mongodb:
+            password: mongo123
+      requirements:
+        - local_storage:
+            node: data_volume
+            relationship:
+              properties:
+                location: /mnt/volume
+      capabilities:
+        scalable:
+          properties:
+            max_instances: 6 # overrides the policy
+
+    data_volume:
+      type: openstack.Volume
+      properties:
+        size: 10 GB
+      interfaces:
+        Standard:
+          inputs:
+            openstack_credential: { get_input: openstack_credential }
+          create: create_data_volume.sh
+
+  groups:
+
+    node_cellar_group:
+      type: openstack.Secured
+      members:
+        - loadbalancer
+        - application_host
+        - data_host
+      interfaces:
+        Standard:
+          inputs:
+            openstack_credential: { get_input: openstack_credential }
+
+  policies:
+
+    app_scaling:
+      type: aria.Scaling
+      properties:
+        max_instances: 10
+        default_instances: 2
+      targets:
+        - node_cellar
+        - nodejs
+
+    host_scaling:
+      type: openstack.Scaling
+      properties:
+        bandwidth_threshold: 2 GB
+        max_instances: 10
+        default_instances: 2
+      targets: # node templates or groups
+        - node_cellar_group
+
+    juju:
+      description: >-
+        Juju plugin executes charms.
+      type: aria.Plugin
+      properties:
+        version: 1.0
+        enabled: false
+
+    maintenance_on:
+      type: MaintenanceWorkflow
+      properties:
+        enabled: true
+
+    maintenance_off:
+      type: MaintenanceWorkflow
+      properties:
+        enabled: false
+
+  substitution_mappings:
+
+    node_type: tosca.nodes.WebApplication
+    requirements:
+      host: [ node_cellar, host ] # doesn't really make sense; just for testing
+    capabilities:
+      app_endpoint: [ loadbalancer, client ]
+
+  outputs:
+
+    endpoint:
+      description: >-
+        The application endpoint.
+      type: string
+      value: { get_property: [ nodejs, data_endpoint, url_path ] }
+
+policy_types:
+
+  MaintenanceWorkflow:
+    description: >-
+      Workflow to put all nodes in/out of maintenance mode. For web servers, this will show a "this
+      site is under maintenance and we'll be back soon" web page. Database nodes will then close all
+      client connections cleanly and shut down services.
+    derived_from: aria.Workflow
+    properties:
+      implementation:
+        type: string
+        default: workflows.maintenance
+      enabled:
+        description: >-
+          Whether to turn maintenance mode on or off.
+        type: boolean
