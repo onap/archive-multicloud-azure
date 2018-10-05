@@ -1,0 +1,56 @@
+# Copyright (c) 2016 GigaSpaces Technologies Ltd. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License"); you may
+# not use this file except in compliance with the License. You may obtain
+# a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+# License for the specific language governing permissions and limitations
+# under the License.
+
+[tox]
+envlist=py27,py26,pywin,flake8code,flake8tests
+processes={env:PYTEST_PROCESSES:auto}
+
+[testenv]
+deps =
+  --requirement
+    requirements.txt
+  --requirement
+    aria_extension_tests/requirements.txt
+basepython =
+  py26: python2.6
+  py27: python2.7
+  flake8: python2.7
+  pywin: {env:PYTHON:}\python.exe
+
+[testenv:py27]
+commands=
+  pytest aria_extension_tests \
+    --numprocesses={[tox]processes} \
+    --cov-report term-missing \
+    --cov adapters
+
+[testenv:py26]
+commands=
+  pytest aria_extension_tests \
+    --numprocesses={[tox]processes} \
+    --cov-report term-missing \
+    --cov adapters
+
+[testenv:pywin]
+commands=
+  pytest aria_extension_tests \
+    --numprocesses={[tox]processes} \
+    --cov-report term-missing \
+    --cov adapters
+
+[testenv:flake8code]
+commands=flake8 adapters
+
+[testenv:flake8tests]
+commands=flake8 aria_extension_tests
