@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bada0100_3fca1e50",
+        "filename": "azure/multicloud_azure/pub/aria/__init__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-10-08T15:17:11Z",
+      "side": 1,
+      "message": "License statement is missing",
+      "revId": "e5b7ea389ef165a268cabfd863e286747284d6d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_1faaba70",
+        "filename": "azure/multicloud_azure/swagger/views/infra_workload/__init__.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-10-08T15:17:11Z",
+      "side": 1,
+      "message": "License statement is missing",
+      "revId": "e5b7ea389ef165a268cabfd863e286747284d6d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bada0100_ffac968e",
+        "filename": "azure/multicloud_azure/swagger/views/infra_workload/views.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 845
+      },
+      "writtenOn": "2018-10-08T15:17:11Z",
+      "side": 1,
+      "message": "License statement is missing",
+      "revId": "e5b7ea389ef165a268cabfd863e286747284d6d3",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
