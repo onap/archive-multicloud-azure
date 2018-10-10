@@ -14,6 +14,7 @@ import os
 import sys
 from logging import config
 from onaplogging import monkey
+from aria import install_aria_extensions
 monkey.patch_all()
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -96,3 +97,5 @@ if 'test' in sys.argv:
         TEST_OUTPUT_VERBOSE = True
         TEST_OUTPUT_DESCRIPTIONS = True
         TEST_OUTPUT_DIR = 'test-reports'
+
+install_aria_extensions()

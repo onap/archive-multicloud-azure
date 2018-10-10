@@ -1,0 +1,9 @@
+https://github.com/cloudify-cosmo/cloudify-dsl-parser/archive/master.zip
+https://github.com/cloudify-cosmo/cloudify-rest-client/archive/master.zip
+https://github.com/cloudify-cosmo/cloudify-plugins-common/archive/master.zip
+
+flake8==3.4.1
+pytest==3.2.0
+pytest-cov==2.5.1
+pytest-mock==1.6.2
+pytest-xdist==1.18.2

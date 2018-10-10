@@ -14,7 +14,7 @@
 # limitations under the License.
 
 DIRNAME=`dirname $0`
-DOCKER_BUILD_DIR=`cd $DIRNAME/; pwd`
+DOCKER_BUILD_DIR=`cd $DIRNAME/../; pwd`
 echo "DOCKER_BUILD_DIR=${DOCKER_BUILD_DIR}"
 cd ${DOCKER_BUILD_DIR}
 
@@ -36,7 +36,7 @@ fi
 
 function build_image {
     echo "Start build docker image: ${IMAGE_NAME}"
-    docker build ${BUILD_ARGS} -t ${IMAGE_NAME}:${VERSION} -t ${IMAGE_NAME}:latest -t ${IMAGE_NAME}:${STAGING} .
+    docker build ${BUILD_ARGS} -f docker/Dockerfile -t ${IMAGE_NAME}:${VERSION} -t ${IMAGE_NAME}:latest -t ${IMAGE_NAME}:${STAGING} .
 }
 
 function push_image {

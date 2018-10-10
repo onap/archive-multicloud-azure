@@ -16,6 +16,22 @@ RUN apt-get update && \
     apt-get install -y unzip && \
     apt-get install -y curl && \
     apt-get install -y wget
+RUN apt-get install -y python-dev gcc libffi-dev libssl-dev make
+
+# ARIA orchestrator addition
+RUN pip install -U pip setuptools
+COPY /aria/ /tmp/
+WORKDIR /tmp/aria-extension-cloudify/src/aria
+RUN pip install .
+
+WORKDIR /tmp/aria-extension-cloudify
+RUN pip install .
+
+RUN pip install --force-reinstall  pip==9.0.1
+WORKDIR /tmp
+ADD docker/cloudify_azure_plugin-1.4.2-py27-none-linux_x86_64.wgn /tmp/
+RUN aria plugins install cloudify_azure_plugin-1.4.2-py27-none-linux_x86_64.wgn
+RUN rm cloudify_azure_plugin-1.4.2-py27-none-linux_x86_64.wgn
 
 
 RUN  cd /opt/ && \
