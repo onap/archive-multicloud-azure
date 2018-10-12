@@ -39,7 +39,7 @@
         <sonar.language>py</sonar.language>
         <sonar.pluginName>Python</sonar.pluginName>
         <sonar.inclusions>**/*.py</sonar.inclusions>
-        <sonar.exclusions>**/tests/*,setup.py,**/aria/*</sonar.exclusions>
+        <sonar.exclusions>**/tests/*,setup.py,**/azure/aria/*</sonar.exclusions>
     </properties>
     <build>
       <pluginManagement>
