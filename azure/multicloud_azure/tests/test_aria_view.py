@@ -136,35 +136,6 @@ class WorkoadViewTest(unittest.TestCase):
                                                     plugin_manager,
                                                     logger))
 
-    @mock.patch.object(AriaServiceImpl, 'start_execution')
-    @aria.pass_model_storage
-    @aria.pass_resource_storage
-    @aria.pass_plugin_manager
-    @aria.pass_logger
-    def test_start_execution(self, mock_template_info, model_storage,
-                             resource_storage, plugin_manager, logger):
-        class Workload:
-            def __init__(self, status_id, execution_id, name, input):
-                self.status_id = status_id
-                self.execution_id = execution_id
-                self.input = input
-                self.name = name
-
-        service = Workload(1, 2, "a", "w")
-        mock_template_info.return_value = service
-
-        class Request:
-            def __init__(self, query_params):
-                self.query_params = query_params
-
-        req = Request({'k': 'v'})
-        self.assertNotEqual(200,
-                            self.fsv.start_execution(req, 123, 456, "a1", "b1",
-                                                     model_storage,
-                                                     resource_storage,
-                                                     plugin_manager,
-                                                     logger))
-
     def test_show_execution(self):
         service_op = AriaServiceImpl()
         self.assertNotEqual(200,

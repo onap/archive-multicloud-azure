@@ -23,6 +23,7 @@ from multicloud_azure.pub.config.config import AAI_SERVICE_URL
 from multicloud_azure.pub.config.config import AAI_USERNAME
 from multicloud_azure.pub.config.config import AAI_PASSWORD
 from multicloud_azure.pub.config.config import MSB_SERVICE_IP, MSB_SERVICE_PORT
+from multicloud_azure.pub.config.config import ARIA_SERVER_URL
 
 from multicloud_azure.pub.exceptions import VimDriverAzureException
 
@@ -341,3 +342,12 @@ class AAIClient(object):
                         {'value': cloud_dpdk_info.get("libversion")})
                     })
         return ovsdpdk_capability
+
+
+def call_aria_rest(service_id, workflow_name):
+    base_url = "%s" % (ARIA_SERVER_URL)
+    resource = ("/services/%s/executions/%s" % (service_id, workflow_name))
+    headers = {}
+    headers['content-type'] = 'text/plain'
+    return call_req(base_url, "", "", rest_no_auth, resource, "POST",
+                    headers=headers)

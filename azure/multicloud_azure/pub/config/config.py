@@ -39,3 +39,6 @@ FORWARDED_FOR_FIELDS = ["HTTP_X_FORWARDED_FOR", "HTTP_X_FORWARDED_HOST",
 
 # [Local Config]
 API_SERVER_PORT = 9004
+
+# [ARIA]
+ARIA_SERVER_URL = 'http://127.0.0.1:5000/api/multicloud-azure/v0'
