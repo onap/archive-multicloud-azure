@@ -17,13 +17,12 @@ import time
 import os
 
 from multicloud_azure.pub.aria import util
+from multicloud_azure.pub.utils.restcall import call_aria_rest
 from aria.cli.core import aria
 from aria.cli import utils
 from aria.core import Core
 from aria.cli import service_template_utils
 from aria.storage import exceptions as storage_exceptions
-from aria.utils import threading
-from aria.orchestrator.workflow_runner import WorkflowRunner as Runner
 
 LOG = logging.getLogger(__name__)
 
@@ -48,12 +47,10 @@ class AriaServiceImpl(object):
             status, template_name + time.strftime('%Y%m%d%H%M%S'), inputs)
         if (status[1] != 200):
             return status[0], status[1]
-        execution_id = time.strftime('%Y%m%d%H%M%S')
-        thread = threading.ExceptionThread(target=self.start_execution,
-                                           args=(status[2].id, execution_id,
-                                                 inputs, 'install'))
-        thread.start()
-        return execution_id, 200
+        status = call_aria_rest(status[2].id, 'install')
+        if (status[2] != "202"):
+            return status[1], status[2]
+        return json.loads(status[1])['id'], 200
 
     @aria.pass_model_storage
     @aria.pass_resource_storage
@@ -110,35 +107,6 @@ class AriaServiceImpl(object):
         service = core.create_service(template_id, input, service_name)
         logger.info("service {} created".format(service.name))
         return "service {} created".format(service.name), 200, service
-
-    @aria.pass_model_storage
-    @aria.pass_resource_storage
-    @aria.pass_plugin_manager
-    @aria.pass_logger
-    def start_execution(self, service_id, execution_id, input, workflow_name,
-                        model_storage,
-                        resource_storage,
-                        plugin_manager,
-                        logger):
-        """
-        Start an execution for the specified service
-        """
-        input = input['sdnc_directives'] if'sdnc_directives'in input else None
-        runner = Runner(model_storage, resource_storage, plugin_manager,
-                        execution_id=execution_id,
-                        service_id=service_id,
-                        workflow_name=workflow_name,
-                        inputs=input)
-
-        service = model_storage.service.get(service_id)
-        tname = '{}_{}_{}'.format(service.name, workflow_name,
-                                  runner.execution_id)
-        thread = threading.ExceptionThread(target=runner.execute,
-                                           name=tname)
-        thread.start()
-        execution_state[str(runner.execution_id)] = [runner, thread]
-        logger.info("execution {} started".format(runner.execution_id))
-        return json.dumps({"id": runner.execution_id}), 202
 
     @aria.pass_model_storage
     @aria.pass_logger

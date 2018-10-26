@@ -31,6 +31,7 @@ then
     python multivimbroker/scripts/api.py
 else
     # nohup python manage.py runserver 0.0.0.0:9008 2>&1 &
+    nohup aria-rest 2>&1 &
     nohup uwsgi --http :9008 --module multicloud_azure.wsgi --master --processes 4 &
     nohup python -m multicloud_azure.event_listener.server 2>&1 &
 
