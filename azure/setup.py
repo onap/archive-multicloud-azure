@@ -19,5 +19,8 @@ setuptools.setup(
     version="1.0",
     packages=setuptools.find_packages(),
     include_package_data=True,
+    install_requires=[
+        'msrest~=0.4.28'
+    ],
     zip_safe=True
 )

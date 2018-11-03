@@ -32,9 +32,16 @@ RUN pip install .
 
 RUN pip install --force-reinstall  pip==9.0.1
 WORKDIR /tmp
-ADD docker/cloudify_azure_plugin-1.4.2-py27-none-linux_x86_64.wgn /tmp/
+
+RUN git clone -b 1.4.2 https://github.com/cloudify-incubator/cloudify-azure-plugin
+
+RUN sed -i "s/utils.get_resource_config(_ctx=ipc)/{'properties': utils.get_resource_config(_ctx=ipc)}/g" cloudify-azure-plugin/cloudify_azure/resources/network/ipconfiguration.py
+
+RUN wagon create ./cloudify-azure-plugin
+
 RUN aria plugins install cloudify_azure_plugin-1.4.2-py27-none-linux_x86_64.wgn
 RUN rm cloudify_azure_plugin-1.4.2-py27-none-linux_x86_64.wgn
+#RUN rm -rf cloudify-azure-plugin
 
 
 RUN  cd /opt/ && \
