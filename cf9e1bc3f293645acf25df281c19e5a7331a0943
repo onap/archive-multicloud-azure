@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Gildas Lanilis <gildas.lanilis@huawei.com>
+Code-Review+1: Stephen Winslow <swinslow@linuxfoundation.org>
+Code-Review+2: Bin Hu <bin.hu@att.com>
+Submitted-by: Sudhakar Reddy <Sudhakar.Reddy@amdocs.com>
+Submitted-at: Mon, 05 Nov 2018 03:59:23 +0000
+Reviewed-on: https://gerrit.onap.org/r/71786
+Project: multicloud/azure
+Branch: refs/heads/master
