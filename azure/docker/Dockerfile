@@ -18,6 +18,7 @@ RUN apt-get update && \
     apt-get install -y wget
 RUN apt-get install -y python-dev gcc libffi-dev libssl-dev make
 
+RUN groupadd -r onap && useradd -r -g onap onap
 # ARIA orchestrator addition
 RUN pip install -U pip setuptools
 COPY /aria/ /tmp/
@@ -48,8 +49,12 @@ RUN  cd /opt/ && \
     wget -q -O multicloud-azure.zip 'https://nexus.onap.org/service/local/artifact/maven/redirect?r=snapshots&g=org.onap.multicloud.azure&a=multicloud-azure&v=LATEST&e=zip' && \
     unzip multicloud-azure.zip && \
     rm -rf multicloud-azure.zip && \
-    pip install -r multicloud_azure/requirements.txt
+    pip install -r multicloud_azure/requirements.txt && \
+    chown onap:onap /opt/multicloud_azure -R
+
+RUN mkdir /home/onap && chown onap:onap /home/onap -R
 
 WORKDIR /opt
 RUN chmod +x multicloud_azure/docker/*.sh && chmod +x multicloud_azure/*.sh
+USER onap
 ENTRYPOINT multicloud_azure/docker/docker-entrypoint.sh
