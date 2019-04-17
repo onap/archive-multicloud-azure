@@ -1,4 +1,4 @@
-FROM python:2
+FROM python:2-alpine
 
 ENV MSB_ADDR "127.0.0.1"
 ENV MSB_PORT "80"
@@ -12,13 +12,10 @@ ENV MR_PORT "3904"
 
 EXPOSE 9008
 
-RUN apt-get update && \
-    apt-get install -y unzip && \
-    apt-get install -y curl && \
-    apt-get install -y wget
-RUN apt-get install -y python-dev gcc libffi-dev libssl-dev make
+RUN apk update && \
+    apk add unzip curl wget git python-dev gcc libffi-dev openssl-dev make libc-dev
 
-RUN groupadd -r onap && useradd -r -g onap onap
+RUN addgroup -S onap && adduser -S -G onap onap
 # ARIA orchestrator addition
 RUN pip install -U pip setuptools
 COPY /aria/ /tmp/
@@ -52,7 +49,7 @@ RUN  cd /opt/ && \
     pip install -r multicloud_azure/requirements.txt && \
     chown onap:onap /opt/multicloud_azure -R
 
-RUN mkdir /home/onap && chown onap:onap /home/onap -R
+RUN mkdir -p /home/onap && chown onap:onap /home/onap -R
 
 WORKDIR /opt
 RUN chmod +x multicloud_azure/docker/*.sh && chmod +x multicloud_azure/*.sh
