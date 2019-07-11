@@ -16,12 +16,11 @@
     <parent>
         <groupId>org.onap.oparent</groupId>
         <artifactId>oparent</artifactId>
-        <version>1.2.0</version>
-        <relativePath>../oparent</relativePath>
+        <version>2.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.onap.multicloud.azure</groupId>
-    <artifactId>multicloud-azure</artifactId>
+    <groupId>org.onap.multicloud.azure.root</groupId>
+    <artifactId>multicloud-azure-root</artifactId>
     <version>1.2.4-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>multicloud-azure</name>
