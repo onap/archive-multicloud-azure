@@ -45,10 +45,8 @@ echo "MVN_PROJECT_VERSION is             [$MVN_PROJECT_VERSION]"
 run_tox_test()
 {
   set -x
-  cd azure
   CURDIR=$(pwd)
   TOXINIS=$(find . -name "tox.ini")
-  cd ..
   for TOXINI in "${TOXINIS[@]}"; do
     DIR=$(echo "$TOXINI" | rev | cut -f2- -d'/' | rev)
     cd "${CURDIR}/${DIR}"
