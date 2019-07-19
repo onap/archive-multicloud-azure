@@ -135,6 +135,11 @@
                                             <directory>${project.basedir}/docker</directory>
                                             <filtering>true</filtering>
                                         </resource>
+                                        <resource>
+                                            <targetPath>${project.basedir}/docker_target/aria</targetPath>
+                                            <directory>${project.basedir}/aria</directory>
+                                            <filtering>true</filtering>
+                                        </resource>
                                     </resources>
                                 </configuration>
                             </execution>
