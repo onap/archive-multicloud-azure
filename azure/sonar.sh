@@ -56,7 +56,7 @@ run_tox_test()
     pip install --upgrade pip
     pip install --upgrade tox argparse
     pip freeze
-    cd multicloud_azure
+    cd ${CURDIR}
     tox -e cover
     deactivate
     cd ..
