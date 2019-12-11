@@ -30,6 +30,8 @@ def index():
 
 @app.route(route_base + "templates/", methods = ['GET'])
 def list_templates():
+  pass
+
 
 @app.route(route_base + "templates/<template_id>", methods = ['POST'])
 def install_template( template_id ):
