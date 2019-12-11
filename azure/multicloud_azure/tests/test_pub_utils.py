@@ -46,7 +46,7 @@ class TestPub(unittest.TestCase):
 
     def test_make_dirs(self):
         path = "/tmp/azure/azure/bin"
-        self.assertEqual(os.makedirs(path, 0777), make_dirs(path))
+        self.assertEqual(os.makedirs(path, 0o777), make_dirs(path))
 
     def test_delete_dirs(self):
         path = "/tmp/azure/azure/bin"
